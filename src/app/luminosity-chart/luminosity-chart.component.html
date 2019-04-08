@@ -1,0 +1,22 @@
+<nav class="nav flex-column float-right border">
+  <button type="button" class="nav-link btn btn-info" 
+          [ngClass]="{'active': steppedActive}"
+          (click)="switchStepped()">Stepped</button>
+  <button type="button" class="nav-link btn btn-info" 
+          [ngClass]="{'active': stackedActive}"
+          (click)="switchStacked()">Stacked</button>
+  <button type="button" class="nav-link btn btn-info" 
+          [ngClass]="{'active': pieActive}"
+          (click)="switchPie()">Pie</button>
+</nav>
+
+
+<div class="row w-75 "  [hidden]="!steppedActive">
+    <canvas id="luminositySteppedCanvas">{{ luminositySteppedChart }}</canvas>
+</div>
+<div class="row w-75" [hidden]="!stackedActive">
+      <canvas id="luminosityStackedCanvas">{{ luminosityStackedChart }}</canvas>
+</div>
+<div class="row w-75" [hidden]="!pieActive">
+    <canvas id="luminosityPieCanvas">{{ luminosityPieChart }}</canvas>
+</div>

@@ -1,0 +1,56 @@
+<div class="container mt-3 " *ngIf="measures != ''">
+  <div class="row ">
+    <div class="col ">
+      <img src="../../assets/images/plan.png" class=" w-75"/>
+    </div>
+    <div class="col" >
+      <div class="row-fluid">
+          <div class="span2">{{measures[0].name}} : {{getMovementLabel()}} {{measures[0].unit}}</div>
+          <div class="span10 mb-3">
+            <div class="progress">
+              <div class="progress-bar bg-success" role="progressbar" [ngStyle]="{width: getMouvementPercentage()}" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+          </div>
+      </div>
+      <div class="row-fluid">
+          <div class="span2">{{measures[1].name}} : {{measures[1].value}} {{measures[1].unit}}</div>
+          <div class="span10 mb-3">
+              <div class="progress">
+                <div class="progress-bar bg-danger" role="progressbar" [ngStyle]="{width: getTemperaturePercentage()}" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+          </div>
+      </div>
+      <div class="row-fluid">
+          <div class="span2">{{measures[2].name}} : {{measures[2].value}} {{measures[2].unit}}</div>
+          <div class="span10 mb-3">
+              <div class="progress">
+                <div class="progress-bar bg-info" role="progressbar" [ngStyle]="{width: getPressionPercentage()}" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+          </div>
+      </div>
+      <div class="row-fluid">
+          <div class="span2">{{measures[3].name}} : {{measures[3].value}} {{measures[3].unit}}</div>
+          <div class="span10 mb-3">
+              <div class="progress">
+                <div class="progress-bar" role="progressbar" [ngStyle]="{width: getHumidityPercentage()}" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+          </div>
+      </div>
+      <div class="row-fluid">
+          <div class="span2">{{measures[4].name}} : {{measures[4].value}} {{measures[4].unit}}</div>
+          <div class="span10 mb-3">
+              <div class="progress">
+                <div class="progress-bar bg-warning" role="progressbar" [ngStyle]="{width: getLuminosityPercentage()}" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">{{measures[4].value}}</div>
+              </div>
+          </div>
+      </div>
+
+      <!--<button class="btn btn-primary"
+        (click)="onSave()">Enregistrer les measures</button>
+
+        <button class="btn btn-primary"
+        (click)="onFetch()">Récupérer les appareils</button>
+      -->
+    </div>
+  </div>
+</div> 
