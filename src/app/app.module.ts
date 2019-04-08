@@ -26,6 +26,7 @@ import { PressureChartComponent } from './pressure-chart/pressure-chart.componen
 import { MovementChartComponent } from './movement-chart/movement-chart.component';
 import { HumidityChartComponent } from './humidity-chart/humidity-chart.component';
 import { LuminosityChartComponent } from './luminosity-chart/luminosity-chart.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
  
 const appRoutes: Routes = [
   { path: 'currentMeasure', component: CurrentMeasureComponent },
@@ -56,6 +57,8 @@ const appRoutes: Routes = [
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     //AngularFireAuthModule,
+    FormsModule,
+    ReactiveFormsModule,
     RouterModule.forRoot(appRoutes),
   ],
   providers: [

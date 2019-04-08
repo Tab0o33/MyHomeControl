@@ -1,3 +1,30 @@
-<p>
-  alert-setting works!
-</p>
+<div class="container mt-3">
+
+  <div class="row">
+    <div *ngFor="let a of alerts">
+      <div>{{a.name}}</div>
+    </div>
+  </div>
+
+  <button type="button" class="btn btn-primary" *ngIf="!showForm" (click)="addAlertSwitcher()">Ajouter</button>
+
+  <div class="row" *ngIf="showForm">
+    <div class="col-sm-8 col-sm-offset-2">
+      <form [formGroup]="userForm" (ngSubmit)="onSubmitForm()">
+        <div class="form-group">
+          <label for="parameter">Grandeur Physique</label>
+          <select id="parameter" class="form-control" formControlName="parameter">
+            <option value="movement">Mouvement</option>
+            <option value="temperature">Température</option>
+            <option value="pressure">Pression</option>
+            <option value="humidity">Humidité</option>
+            <option value="luminosity">Luminosité</option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Soumettre</button>
+        <button class="btn btn-secondary" (click)="addAlertSwitcher()">Annuler</button>
+      </form>
+    </div>
+  </div>
+
+</div>

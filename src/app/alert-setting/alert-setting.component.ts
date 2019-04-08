@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup} from '@angular/forms';
 
 @Component({
   selector: 'app-alert-setting',
@@ -7,9 +8,38 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AlertSettingComponent implements OnInit {
 
-  constructor() { }
+  alerts = [
+    {
+      name: "toto"
+    },
+    {
+      name: "titi"
+    }
+  ];
+
+  showForm = false;
+
+  userForm: FormGroup;
+
+  constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit() {
+    this.initForm();
+  }
+
+  initForm() {
+    this.userForm = this.formBuilder.group({
+      parameter: ''
+    });
+  }
+
+  onSubmitForm() {
+    const formValue = this.userForm.value;
+    console.log(formValue);
+  }
+
+  addAlertSwitcher(){
+    this.showForm = !this.showForm;
   }
 
 }
