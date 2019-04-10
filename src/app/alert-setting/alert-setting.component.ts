@@ -8,38 +8,46 @@ import { FormBuilder, FormGroup} from '@angular/forms';
 })
 export class AlertSettingComponent implements OnInit {
 
-  alerts = [
-    {
-      name: "toto"
-    },
-    {
-      name: "titi"
+    eventTargetValue: string;
+
+    alerts = [
+        {
+        name: "toto"
+        },
+        {
+        name: "titi"
+        }
+    ];
+
+    showForm = false;
+
+    userForm: FormGroup;
+
+    constructor(private formBuilder: FormBuilder) { }
+
+    ngOnInit() {
+        this.initForm();
     }
-  ];
 
-  showForm = false;
+    initForm() {
+        this.userForm = this.formBuilder.group({
+        parameter: '',
+        signe: '',
+        pValue:''
+        });
+    }
 
-  userForm: FormGroup;
+    onSubmitForm() {
+        const formValue = this.userForm.value;
+        console.log(formValue);
+    }
 
-  constructor(private formBuilder: FormBuilder) { }
+    addAlertSwitcher(){
+        this.showForm = !this.showForm;
+    }
 
-  ngOnInit() {
-    this.initForm();
-  }
-
-  initForm() {
-    this.userForm = this.formBuilder.group({
-      parameter: ''
-    });
-  }
-
-  onSubmitForm() {
-    const formValue = this.userForm.value;
-    console.log(formValue);
-  }
-
-  addAlertSwitcher(){
-    this.showForm = !this.showForm;
-  }
+    changeParameter(eventTargetValue){
+            this.eventTargetValue = eventTargetValue;
+    }
 
 }
