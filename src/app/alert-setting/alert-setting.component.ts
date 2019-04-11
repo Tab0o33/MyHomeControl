@@ -15,6 +15,8 @@ export class AlertSettingComponent implements OnInit {
 
     alerts = [];
 
+    toto:string;
+
     showForm = false;
 
 
