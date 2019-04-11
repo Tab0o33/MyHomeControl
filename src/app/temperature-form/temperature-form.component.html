@@ -1,0 +1,20 @@
+<form (ngSubmit)="onSubmit(f)" #f="ngForm">
+
+    <div class="form-group">
+        <label for="signe">
+            Signe
+        </label>
+        <select id="signe" class="form-control" name="signe" ngModel>
+            <option value="upper">supérieur</option>
+            <option value="lower">inferieur</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="tempValue">
+            valeur (°C)
+        </label>
+        <input type="text" id="tempValue" class="form-control" name="tempValue" ngModel>
+    </div>
+    <button class="btn btn-primary" type="submit">Enregistrer</button>
+
+</form>

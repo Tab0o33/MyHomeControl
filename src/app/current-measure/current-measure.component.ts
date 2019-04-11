@@ -34,16 +34,12 @@ export class CurrentMeasureComponent implements OnInit {
   getLuminosityPercentage(){
     switch (this.measures[4].value) {
       case 'jour':
-        console.log('jour');
         return '100%'
       case 'éclairé':
-        console.log('éclairé');
         return '66%'
       case 'sombre':
-        console.log('sombre');
         return '33%'
       case 'noir':
-        console.log('noir');
         return '0%'
       default:
         console.log('err.');

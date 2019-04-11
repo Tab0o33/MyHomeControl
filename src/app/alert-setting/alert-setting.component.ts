@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup} from '@angular/forms';
+import { AlertService } from '../services/alert.service';
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
   selector: 'app-alert-setting',
@@ -8,38 +9,32 @@ import { FormBuilder, FormGroup} from '@angular/forms';
 })
 export class AlertSettingComponent implements OnInit {
 
-  alerts = [
-    {
-      name: "toto"
-    },
-    {
-      name: "titi"
+    alertSubscription: Subscription;
+
+    eventTargetValue: string;
+
+    alerts = [];
+
+    showForm = false;
+
+
+    constructor(private alertService: AlertService) { }
+
+    ngOnInit() {
+        this.alertSubscription = this.alertService.alertsSubject.subscribe(
+            (measures: any[]) => {
+              this.alerts = measures;
+            }
+          );
+          this.alertService.emitAlertSubject();
     }
-  ];
 
-  showForm = false;
+    addAlertSwitcher(){
+        this.showForm = !this.showForm;
+    }
 
-  userForm: FormGroup;
-
-  constructor(private formBuilder: FormBuilder) { }
-
-  ngOnInit() {
-    this.initForm();
-  }
-
-  initForm() {
-    this.userForm = this.formBuilder.group({
-      parameter: ''
-    });
-  }
-
-  onSubmitForm() {
-    const formValue = this.userForm.value;
-    console.log(formValue);
-  }
-
-  addAlertSwitcher(){
-    this.showForm = !this.showForm;
-  }
+    changePhysicalParameter(eventTargetValue){
+            this.eventTargetValue = eventTargetValue;
+    }
 
 }

@@ -7,7 +7,7 @@ import { MeasureHistoryComponent } from './measure-history/measure-history.compo
 import { AlertSettingComponent } from './alert-setting/alert-setting.component'; 
 
 import { MeasureService } from './services/measure.service';
-import { WeatherService } from './services/weather.service';
+import { AlertService } from './services/alert.service';
 
 import { Routes, RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
@@ -19,7 +19,7 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireDatabase } from 'angularfire2/database';
 //import { AngularFireAuthModule } from 'angularfire2/auth';
 //import { AngularFireAuth } from 'angularfire2/auth';
-import * as firebase from 'firebase';
+//import * as firebase from 'firebase';
 import { FourOhFourComponent } from './four-oh-four/four-oh-four.component';
 import { TemperatureChartComponent } from './temperature-chart/temperature-chart.component';
 import { PressureChartComponent } from './pressure-chart/pressure-chart.component';
@@ -27,6 +27,7 @@ import { MovementChartComponent } from './movement-chart/movement-chart.componen
 import { HumidityChartComponent } from './humidity-chart/humidity-chart.component';
 import { LuminosityChartComponent } from './luminosity-chart/luminosity-chart.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { TemperatureFormComponent } from './temperature-form/temperature-form.component';
  
 const appRoutes: Routes = [
   { path: 'currentMeasure', component: CurrentMeasureComponent },
@@ -49,7 +50,8 @@ const appRoutes: Routes = [
     PressureChartComponent,
     MovementChartComponent,
     HumidityChartComponent,
-    LuminosityChartComponent
+    LuminosityChartComponent,
+    TemperatureFormComponent
   ],
   imports: [
     BrowserModule,
@@ -63,7 +65,7 @@ const appRoutes: Routes = [
   ],
   providers: [
     MeasureService,
-    WeatherService
+    AlertService
   ],
   bootstrap: [AppComponent]
 })

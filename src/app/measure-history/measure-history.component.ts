@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MeasureService } from '../services/measure.service';
-import { WeatherService } from '../services/weather.service';
 import { Chart } from 'chart.js';
 
 @Component({
@@ -18,8 +17,7 @@ export class MeasureHistoryComponent implements OnInit {
   //chart = []; // This will hold our chart info
 
   constructor(private measureService: MeasureService,
-              private route: ActivatedRoute,
-              private weather: WeatherService) { }
+              private route: ActivatedRoute) { }
 
   ngOnInit() {
     /*this.name = this.route.snapshot.params['id'];
