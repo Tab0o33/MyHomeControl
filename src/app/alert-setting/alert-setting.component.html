@@ -1,12 +1,38 @@
 <div class="container mt-3">
 
+    <div>Mouvement</div>
     <div class="row">
-        <div *ngFor="let alert of alerts">
-            <div *ngIf="alert.physicalParameter === 'temperature'">{{alert.physicalParameter}} {{alert.signe}} {{alert.value}} °C</div>
-        </div>
+        <ul class="list-group">
+            <div *ngFor="let alert of alerts">
+                <div *ngIf="alert.physicalParameter === 'movement'">
+                    <div *ngIf="alert.everyDay === true">
+                        <app-alert-item message="Tous les jours entre {{alert.startDate}}  et {{alert.endDate}} ">
+                        </app-alert-item>
+                    </div>
+                    <div *ngIf="alert.everyDay === false">
+                        <app-alert-item message="Du {{alert.startDate}}  au {{alert.endDate}} ">
+                        </app-alert-item>
+                    </div>
+                </div>
+            </div>
+        </ul>
     </div>
 
-    <button type="button" class="btn btn-primary" *ngIf="!showForm" (click)="addAlertSwitcher()">Ajouter</button>
+    <div>Température</div>
+    <div class="row">
+        <ul class="list-group">
+            <div *ngFor="let alert of alerts">
+                <div *ngIf="alert.physicalParameter === 'temperature'">
+                    <app-alert-item message="{{alert.physicalParameter}} {{alert.signe}} {{alert.value}} °C">
+
+                    </app-alert-item>
+
+                </div>
+            </div>
+        </ul>
+    </div>
+
+    <button type="button" class="btn btn-primary mt-5" *ngIf="!showForm" (click)="addAlertSwitcher()">Ajouter</button>
 
     <div class="row" *ngIf="showForm">
         <div class="col-sm-8 col-sm-offset-2">
@@ -27,7 +53,7 @@
 
             <app-temperature-form *ngIf="eventTargetValue === 'temperature'"></app-temperature-form>
 
-            <button class="btn btn-secondary" (click)="addAlertSwitcher()">Annuler</button>
+            <button class="btn btn-secondary " (click)="addAlertSwitcher()">Annuler</button>
         </div>
     </div>
 

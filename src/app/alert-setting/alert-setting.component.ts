@@ -15,8 +15,6 @@ export class AlertSettingComponent implements OnInit {
 
     alerts = [];
 
-    toto:string;
-
     showForm = false;
 
 
@@ -24,8 +22,8 @@ export class AlertSettingComponent implements OnInit {
 
     ngOnInit() {
         this.alertSubscription = this.alertService.alertsSubject.subscribe(
-            (measures: any[]) => {
-              this.alerts = measures;
+            (alerts: any[]) => {
+              this.alerts = alerts;
             }
           );
           this.alertService.emitAlertSubject();
