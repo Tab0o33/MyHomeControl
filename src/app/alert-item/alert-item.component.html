@@ -1,5 +1,7 @@
 <li class="list-group-item">
-  {{message}} 
-  <button type="button" class="btn btn-warning">modify</button>
-  <button type="button" class="btn btn-danger">trash</button>
+    <div class="row">
+        <div class="list-group-item-text col-8 pt-2">{{message}}</div>
+        <div class=" col-2"><button type="button" class="btn btn-warning">modify</button></div>
+        <div class=" col-2"><button type="button" class="btn btn-danger" (click)="onDeleteOne()">trash</button></div>
+    </div>
 </li>

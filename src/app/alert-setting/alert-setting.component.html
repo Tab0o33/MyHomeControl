@@ -2,15 +2,15 @@
 
     <div>Mouvement</div>
     <div class="row">
-        <ul class="list-group">
-            <div *ngFor="let alert of alerts">
+        <ul class="list-group col-6">
+            <div *ngFor="let alert of alerts; let i = index">
                 <div *ngIf="alert.physicalParameter === 'movement'">
                     <div *ngIf="alert.everyDay === true">
-                        <app-alert-item message="Tous les jours entre {{alert.startDate}}  et {{alert.endDate}} ">
+                        <app-alert-item message="Tous les jours entre {{alert.startDate}}  et {{alert.endDate}} " [index]="i">
                         </app-alert-item>
                     </div>
                     <div *ngIf="alert.everyDay === false">
-                        <app-alert-item message="Du {{alert.startDate}}  au {{alert.endDate}} ">
+                        <app-alert-item message="Du {{alert.startDate}}  au {{alert.endDate}}" [index]="i">
                         </app-alert-item>
                     </div>
                 </div>
@@ -20,10 +20,10 @@
 
     <div>Température</div>
     <div class="row">
-        <ul class="list-group">
-            <div *ngFor="let alert of alerts">
+        <ul class="list-group col-6">
+            <div *ngFor="let alert of alerts; let i = index">
                 <div *ngIf="alert.physicalParameter === 'temperature'">
-                    <app-alert-item message="{{alert.physicalParameter}} {{alert.signe}} {{alert.value}} °C">
+                    <app-alert-item message="{{alert.physicalParameter}} {{alert.signe}} {{alert.value}} °C"  [index]="i">
 
                     </app-alert-item>
 

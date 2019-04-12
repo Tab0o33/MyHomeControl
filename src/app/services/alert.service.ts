@@ -35,7 +35,14 @@ export class AlertService {
     emitAlertSubject() {
         if (this.alerts)
           this.alertsSubject.next(this.alerts.slice());
-      }
+    }
+
+
+    onDeleteOne(i: number) {
+        console.log(i);
+        this.alerts.splice(i,1);
+        this.emitAlertSubject();
+    }
 
 
 }
