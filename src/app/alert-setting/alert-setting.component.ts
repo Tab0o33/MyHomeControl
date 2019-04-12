@@ -13,6 +13,9 @@ export class AlertSettingComponent implements OnInit {
 
     eventTargetValue: string;
 
+    movementHidden: boolean = false;
+    temperatureHidden: boolean = false;
+
     alerts = [];
 
     showForm = false;
@@ -35,6 +38,14 @@ export class AlertSettingComponent implements OnInit {
 
     changePhysicalParameter(eventTargetValue){
             this.eventTargetValue = eventTargetValue;
+    }
+
+    switchMovementHidden(){
+        this.movementHidden = !this.movementHidden
+    }
+
+    switchTemperatureHidden(){
+        this.temperatureHidden = !this.temperatureHidden
     }
 
 }

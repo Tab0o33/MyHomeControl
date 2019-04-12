@@ -1,12 +1,13 @@
 <div class="container mt-3">
 
-    <div>Mouvement</div>
-    <div class="row">
-        <ul class="list-group col-6">
+    <div (click)="switchMovementHidden()" class="title">Mouvement</div>
+    <div class="collapse " [ngClass]="{'show': !movementHidden}" id="collapseExample">
+        <ul class="list-group col-8">
             <div *ngFor="let alert of alerts; let i = index">
                 <div *ngIf="alert.physicalParameter === 'movement'">
                     <div *ngIf="alert.everyDay === true">
-                        <app-alert-item message="Tous les jours entre {{alert.startDate}}  et {{alert.endDate}} " [index]="i">
+                        <app-alert-item message="Tous les jours entre {{alert.startDate}}  et {{alert.endDate}} "
+                            [index]="i">
                         </app-alert-item>
                     </div>
                     <div *ngIf="alert.everyDay === false">
@@ -18,12 +19,13 @@
         </ul>
     </div>
 
-    <div>Température</div>
-    <div class="row">
-        <ul class="list-group col-6">
+    <div (click)="switchTemperatureHidden()"  class="title">Température</div>
+    <div class="collapse " [ngClass]="{'show': !temperatureHidden}" id="collapseExample">
+        <ul class="list-group col-8">
             <div *ngFor="let alert of alerts; let i = index">
                 <div *ngIf="alert.physicalParameter === 'temperature'">
-                    <app-alert-item message="{{alert.physicalParameter}} {{alert.signe}} {{alert.value}} °C"  [index]="i">
+                    <app-alert-item message="{{alert.physicalParameter}} {{alert.signe}} {{alert.value}} °C"
+                        [index]="i">
 
                     </app-alert-item>
 
@@ -31,6 +33,7 @@
             </div>
         </ul>
     </div>
+
 
     <button type="button" class="btn btn-primary mt-5" *ngIf="!showForm" (click)="addAlertSwitcher()">Ajouter</button>
 
