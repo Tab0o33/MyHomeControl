@@ -1,6 +1,11 @@
 <div class="container mt-3  bg-light">
 
-    <div (click)="switchMovementHidden()" class="title">Mouvement</div>
+    <div (click)="switchMovementHidden()" class="title row">
+        <span class="col-7  ">Mouvement</span>
+        <i *ngIf="movementHidden " class="col-1 material-icons mt-3 ">keyboard_arrow_down</i>
+        <i *ngIf="!movementHidden " class="col material-icons mt-3 ">keyboard_arrow_right</i>
+    </div>
+
     <hr width="66%" align="left">
     <div class="collapse mb-4" [ngClass]="{'show': !movementHidden}" id="collapseExample">
         <ul class="list-group col-8">
@@ -20,7 +25,11 @@
         </ul>
     </div>
 
-    <div (click)="switchTemperatureHidden()"  class="title">Température</div>
+    <div (click)="switchTemperatureHidden()" class="title row">
+        <span class="col-7  ">Température</span>
+        <i *ngIf="temperatureHidden " class="col-1 material-icons mt-3 ">keyboard_arrow_down</i>
+        <i *ngIf="!temperatureHidden " class="col material-icons mt-3 ">keyboard_arrow_right</i>
+    </div>
     <hr width="66%" align="left">
     <div class="collapse " [ngClass]="{'show': !temperatureHidden}" id="collapseExample">
         <ul class="list-group col-8">

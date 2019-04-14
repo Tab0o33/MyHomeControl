@@ -5,7 +5,8 @@ import { Subscription } from 'rxjs/Subscription';
 @Component({
   selector: 'app-alert-setting',
   templateUrl: './alert-setting.component.html',
-  styleUrls: ['./alert-setting.component.scss']
+  styleUrls: ['./alert-setting.component.scss',
+              '../../material-design.css']
 })
 export class AlertSettingComponent implements OnInit {
 
