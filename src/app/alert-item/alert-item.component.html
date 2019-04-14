@@ -1,7 +1,15 @@
 <li class="list-group-item">
     <div class="row">
         <div class="list-group-item-text col-8 pt-2">{{message}}</div>
-        <div class=" col-2"><button type="button" class="btn btn-warning">modify</button></div>
-        <div class=" col-2"><button type="button" class="btn btn-danger" (click)="onDeleteOne()">trash</button></div>
+        <div class=" col-2">
+            <button type="button" class="btn btn-warning">
+                <i class="material-icons">edit</i>
+            </button>
+        </div>
+        <div class=" col-2">
+            <button type="button" class="btn btn-danger" (click)="onDeleteOne()">
+                <i class="material-icons">delete_forever</i>
+            </button>
+        </div>
     </div>
 </li>

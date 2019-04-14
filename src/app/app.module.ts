@@ -29,6 +29,8 @@ import { LuminosityChartComponent } from './luminosity-chart/luminosity-chart.co
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TemperatureFormComponent } from './temperature-form/temperature-form.component';
 import { AlertItemComponent } from './alert-item/alert-item.component';
+
+
  
 const appRoutes: Routes = [
   { path: 'currentMeasure', component: CurrentMeasureComponent },

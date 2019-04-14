@@ -4,7 +4,8 @@ import { AlertService } from '../services/alert.service';
 @Component({
   selector: 'app-alert-item',
   templateUrl: './alert-item.component.html',
-  styleUrls: ['./alert-item.component.scss']
+  styleUrls: ['./alert-item.component.scss',
+              '../../material-design.css']
 })
 export class AlertItemComponent implements OnInit {
 
