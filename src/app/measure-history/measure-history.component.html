@@ -1,27 +1,35 @@
-<div class="container mt-3">
-  <ul class="nav nav-tabs">
-    <li class="nav-item" routerLinkActive="active">
-      <a class="nav-link" [ngClass]="{'active':tabActivated === 'movement'}" routerLink="/history/movement" (click)="openTab('movement')">Mouvement</a>
-    </li>
-    <li class="nav-item" routerLinkActive="active">
-      <a class="nav-link" [ngClass]="{'active':tabActivated === 'temperature'}" routerLink="/history/temperature" (click)="openTab('temperature')">Température</a>
-    </li>
-    <li class="nav-item" routerLinkActive="active">
-      <a class="nav-link" [ngClass]="{'active':tabActivated === 'pression'}" routerLink="/history/pression" (click)="openTab('pression')">Pression</a>
-    </li>
-    <li class="nav-item" routerLinkActive="active">
-      <a class="nav-link" [ngClass]="{'active':tabActivated === 'humidity'}" routerLink="/history/humidity" (click)="openTab('humidity')">Humidité</a>
-    </li>
-    <li class="nav-item" routerLinkActive="active">
-        <a class="nav-link" [ngClass]="{'active':tabActivated === 'luminosity'}" routerLink="/history/luminosity" (click)="openTab('luminosity')">Luminosité</a>
-    </li>
-  </ul>
-</div>
+<div class="container mt-3 mb-4 bg-white shadow-sm border rounded p-4">
+  <div class="">
+    <ul class="nav nav-tabs">
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" [ngClass]="{'active':tabActivated === 'movement'}" routerLink="/history/movement"
+          (click)="openTab('movement')">Mouvement</a>
+      </li>
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" [ngClass]="{'active':tabActivated === 'temperature'}" routerLink="/history/temperature"
+          (click)="openTab('temperature')">Température</a>
+      </li>
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" [ngClass]="{'active':tabActivated === 'pression'}" routerLink="/history/pression"
+          (click)="openTab('pression')">Pression</a>
+      </li>
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" [ngClass]="{'active':tabActivated === 'humidity'}" routerLink="/history/humidity"
+          (click)="openTab('humidity')">Humidité</a>
+      </li>
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" [ngClass]="{'active':tabActivated === 'luminosity'}" routerLink="/history/luminosity"
+          (click)="openTab('luminosity')">Luminosité</a>
+      </li>
+    </ul>
+  </div>
 
-<div class="container mt-3">        
-      <app-movement-chart *ngIf="tabActivated === 'movement'"></app-movement-chart>
-      <app-temperature-chart *ngIf="tabActivated === 'temperature'"></app-temperature-chart>
-      <app-pressure-chart *ngIf="tabActivated === 'pression'"></app-pressure-chart>
-      <app-humidity-chart *ngIf="tabActivated === 'humidity'"></app-humidity-chart>
-      <app-luminosity-chart *ngIf="tabActivated === 'luminosity'"></app-luminosity-chart>
+  <div class="mt-3">
+    <app-movement-chart *ngIf="tabActivated === 'movement'"></app-movement-chart>
+    <app-temperature-chart *ngIf="tabActivated === 'temperature'"></app-temperature-chart>
+    <app-pressure-chart *ngIf="tabActivated === 'pression'"></app-pressure-chart>
+    <app-humidity-chart *ngIf="tabActivated === 'humidity'"></app-humidity-chart>
+    <app-luminosity-chart *ngIf="tabActivated === 'luminosity'"></app-luminosity-chart>
+  </div>
+
 </div>
