@@ -4,19 +4,19 @@
         <span class="col-7  ">Mouvement</span>
         <i *ngIf="movementHidden " class="col-1 material-icons mt-3 ">keyboard_arrow_down</i>
         <i *ngIf="!movementHidden " class="col material-icons mt-3 ">keyboard_arrow_right</i>
-    </div>
+    </div> 
 
     <hr width="66%" align="left">
     <div class="collapse mb-4" [ngClass]="{'show': !movementHidden}" id="collapseExample">
         <ul class="list-group col-8">
             <div *ngFor="let alert of alerts; let i = index">
                 <div *ngIf="alert.physicalParameter === 'movement'">
-                    <div *ngIf="alert.everyDay === true">
+                    <div *ngIf="alert.allTheTime === true">
                         <app-alert-item message="Tous les jours entre {{alert.startDate}}  et {{alert.endDate}} "
                             [index]="i">
                         </app-alert-item>
                     </div>
-                    <div *ngIf="alert.everyDay === false">
+                    <div *ngIf="alert.allTheTime === false">
                         <app-alert-item message="Du {{alert.startDate}}  au {{alert.endDate}}" [index]="i">
                         </app-alert-item>
                     </div>
@@ -46,9 +46,9 @@
     </div>
 
 
-    <button type="button" class="btn btn-primary mt-5" *ngIf="!showForm" (click)="addAlertSwitcher()">Ajouter</button>
+    <button type="button" class="btn btn-primary my-5" *ngIf="!showForm" (click)="addAlertSwitcher()">Ajouter</button>
 
-    <div class="row" *ngIf="showForm">
+    <div class="row my-5" *ngIf="showForm">
         <div class="col-sm-8 col-sm-offset-2">
 
             <div class="form-group">

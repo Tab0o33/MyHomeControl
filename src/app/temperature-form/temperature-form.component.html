@@ -9,12 +9,53 @@
             <option value="lower">inferieur</option>
         </select>
     </div>
+
     <div class="form-group">
         <label for="tempValue">
-            valeur (°C)
+            Valeur (°C)
         </label>
         <input type="text" id="tempValue" class="form-control" name="tempValue" ngModel>
     </div>
+
+    <div class="form-check">
+        <input type="checkbox" class="form-check-input" id="allTheTimeCbox" checked="true" (change)="switchAllTheTime()">
+        <label class="form-check-label" for="allTheTimeCbox">Tout le temps</label>
+    </div>
+    <div *ngIf="!allTheTime">
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="oneOrSeveralDaysRbutton" id="oneDayRbutton"
+                value="option1" (change)="switchSeveralDays()" checked>
+            <label class="form-check-label" for="oneDayRbutton">
+                Le :
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="oneOrSeveralDaysRbutton" id="SeveralDaysRbutton"
+                value="option2" (change)="switchSeveralDays()">
+            <label class="form-check-label" for="SeveralDaysRbutton">
+                Du ... au ... :
+            </label>
+        </div>
+        <div class="row" *ngIf="!severalDays">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <div class="input-group date" id="datetimepicker1" data-target-input="nearest">
+                        <input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker1"/>
+                        <div class="input-group-append" data-target="#datetimepicker1" data-toggle="datetimepicker">
+                            <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="severalDays">
+
+        </div>
+    </div>
+
+
+
+
     <button class="btn btn-primary" type="submit">Enregistrer</button>
 
 </form>

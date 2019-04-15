@@ -8,6 +8,9 @@ import { NgForm } from '@angular/forms';
 })
 export class TemperatureFormComponent implements OnInit {
 
+    allTheTime: boolean = true;
+    severalDays: boolean = false;
+
     constructor() { }
 
     ngOnInit() {
@@ -16,4 +19,14 @@ export class TemperatureFormComponent implements OnInit {
     onSubmit(form: NgForm) {
         console.log(form.value);
     }
+
+    switchAllTheTime(){
+        this.allTheTime = !this.allTheTime;
+    }
+
+    switchSeveralDays(){
+        this.severalDays = !this.severalDays;
+        console.log(this.severalDays);
+    }
+
 }
