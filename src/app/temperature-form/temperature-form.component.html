@@ -18,10 +18,14 @@
     </div>
 
     <div class="form-check">
-        <input type="checkbox" class="form-check-input" id="allTheTimeCbox" checked="true" (change)="switchAllTheTime()">
-        <label class="form-check-label" for="allTheTimeCbox">Tout le temps</label>
+        <input type="checkbox" class="form-check-input" id="allDaysCbox" checked="true" (change)="switchAllDays()">
+        <label class="form-check-label" for="allDaysCbox">Tous les jours</label>
     </div>
-    <div *ngIf="!allTheTime">
+    <div class="form-check">
+        <input type="checkbox" class="form-check-input" id="allTheDayCbox" checked="true" (change)="switchAllTheDay()">
+        <label class="form-check-label" for="allTheDayCbox">Toute la journée</label>
+    </div>
+    <div *ngIf="!allDays">
         <div class="form-check">
             <input class="form-check-input" type="radio" name="oneOrSeveralDaysRbutton" id="oneDayRbutton"
                 value="option1" (change)="switchSeveralDays()" checked>
@@ -40,7 +44,7 @@
             <div class="col-sm-6">
                 <div class="form-group">
                     <div class="input-group date" id="datetimepicker1" data-target-input="nearest">
-                        <input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker1"/>
+                        <input type="text" NgTempusdominusBootstrapInput  [options]="options" class="form-control datetimepicker-input" data-target="#datetimepicker1" />
                         <div class="input-group-append" data-target="#datetimepicker1" data-toggle="datetimepicker">
                             <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                         </div>
@@ -49,7 +53,56 @@
             </div>
         </div>
         <div *ngIf="severalDays">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <div class="input-group date" id="datetimepicker2" data-target-input="nearest">
+                        <input type="text" NgTempusdominusBootstrapInput  [options]="options2" class="form-control datetimepicker-input" data-target="#datetimepicker2" />
+                        <div class="input-group-append" data-target="#datetimepicker2" data-toggle="datetimepicker">
+                            <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <div class="input-group date" id="datetimepicker3" data-target-input="nearest">
+                        <input type="text" NgTempusdominusBootstrapInput  [options]="options3" class="form-control datetimepicker-input" data-target="#datetimepicker3" />
+                        <div class="input-group-append" data-target="#datetimepicker3" data-toggle="datetimepicker">
+                            <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
+    <div *ngIf="!allTheDay">
+        <label class="form-check-label" for="SeveralDaysRbutton">
+            De ... à ... :
+        </label>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <div class="input-group date" id="datetimepicker4" data-target-input="nearest">
+                        <input type="text" NgTempusdominusBootstrapInput  [options]="options4" class="form-control datetimepicker-input" data-target="#datetimepicker4" />
+                        <div class="input-group-append" data-target="#datetimepicker4" data-toggle="datetimepicker">
+                            <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <div class="input-group date" id="datetimepicker5" data-target-input="nearest">
+                        <input type="text" NgTempusdominusBootstrapInput  [options]="options5" class="form-control datetimepicker-input" data-target="#datetimepicker5" />
+                        <div class="input-group-append" data-target="#datetimepicker5" data-toggle="datetimepicker">
+                            <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
