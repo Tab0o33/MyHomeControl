@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { AlertService } from '../services/alert.service';
 
 @Component({
     selector: 'app-temperature-form',
@@ -12,33 +13,43 @@ export class TemperatureFormComponent implements OnInit {
     allTheDay: boolean = true;
     severalDays: boolean = false;
 
-    options = {
+    oneDayDatePickerOptions = {
         format: 'L'
     };
 
-    options2 = {
+    severalDaysStartDatePickerOptions = {
         format: 'L'
     };
 
-    options3 = {
+    severalDaysEndDatePickerOptions = {
         format: 'L'
     };
 
-    options4 = {
+    startTimePickerOptions = {
         format: 'LT'
     };
 
-    options5 = {
+    endTimePickerOptions = {
         format: 'LT'
     };
 
-    constructor() { }
+    constructor(private alertService: AlertService) { }
 
     ngOnInit() {
     }
 
     onSubmit(form: NgForm) {
         console.log(form.value);
+        const startDate = form.value.severalDaysStartDatePicker._d;
+        const endDate = form.value.severalDaysEndDatePicker._d;
+
+        const toto = {
+            physicalParameter: 'movement',
+            allTheTime: true,
+            startDate: startDate,
+            endDate: endDate
+        };
+        this.saveAlert(toto)
     }
 
     switchAllDays(){
@@ -53,5 +64,11 @@ export class TemperatureFormComponent implements OnInit {
         this.severalDays = !this.severalDays;
         console.log(this.severalDays);
     }
+
+    saveAlert(alert){
+        this.alertService.addOneAlert(alert);
+    }
+
+    
 
 }

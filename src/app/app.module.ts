@@ -31,6 +31,7 @@ import { TemperatureFormComponent } from './temperature-form/temperature-form.co
 import { AlertItemComponent } from './alert-item/alert-item.component';
 
 import { NgTempusdominusBootstrapModule } from 'ngx-tempusdominus-bootstrap';
+import { DatetimepickerComponent } from './datetimepicker/datetimepicker.component';
  
 const appRoutes: Routes = [
   { path: 'currentMeasure', component: CurrentMeasureComponent },
@@ -55,7 +56,8 @@ const appRoutes: Routes = [
     HumidityChartComponent,
     LuminosityChartComponent,
     TemperatureFormComponent,
-    AlertItemComponent
+    AlertItemComponent,
+    DatetimepickerComponent
   ],
   imports: [
     BrowserModule,

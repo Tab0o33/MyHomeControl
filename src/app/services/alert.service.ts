@@ -40,9 +40,14 @@ export class AlertService {
     }
 
 
-    onDeleteOne(i: number) {
+    deleteOneAlert(i: number) {
         console.log(i);
         this.alerts.splice(i,1);
+        this.emitAlertSubject();
+    }
+
+    addOneAlert(alert){
+        this.alerts.push(alert);
         this.emitAlertSubject();
     }
 

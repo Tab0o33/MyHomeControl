@@ -21,7 +21,7 @@ export class AlertItemComponent implements OnInit {
   }
 
   onDeleteOne(){
-    this.alertService.onDeleteOne(this.index);
+    this.alertService.deleteOneAlert(this.index);
   }
 
 }
