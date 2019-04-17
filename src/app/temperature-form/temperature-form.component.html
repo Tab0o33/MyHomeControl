@@ -21,13 +21,14 @@
         <label for="tempValue">
             Paramètres temporels :
         </label>
-        <div class="form-check">
-            <input type="checkbox" class="form-check-input" id="allDaysCbox" checked="true" (change)="switchAllDays()">
+        <div class="form-check" >
+            <input type="checkbox" class="form-check-input" id="allDaysCbox" 
+                name="allDaysCbox" [(ngModel)]="allDays">
             <label class="form-check-label" for="allDaysCbox">Tous les jours</label>
         </div>
         <div class="form-check">
-            <input type="checkbox" class="form-check-input" id="allTheDayCbox" checked="true"
-                (change)="switchAllTheDay()">
+            <input type="checkbox" class="form-check-input" id="allTheDayCbox"
+                name="allTheDayCbox" [(ngModel)]="allTheDay">
             <label class="form-check-label" for="allTheDayCbox">Toute la journée</label>
         </div>
     </div>

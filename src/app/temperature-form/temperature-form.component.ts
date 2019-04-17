@@ -44,7 +44,7 @@ export class TemperatureFormComponent implements OnInit {
         const endDate = form.value.severalDaysEndDatePicker._d;
 
         const toto = {
-            physicalParameter: 'movement',
+            physicalParameter: 'temperature',
             allTheTime: true,
             startDate: startDate,
             endDate: endDate
@@ -52,13 +52,14 @@ export class TemperatureFormComponent implements OnInit {
         this.saveAlert(toto)
     }
 
-    switchAllDays(){
+    /*switchAllDays(event){
+        console.log(event.target);
         this.allDays = !this.allDays;
     }
 
     switchAllTheDay(){
         this.allTheDay = !this.allTheDay;
-    }
+    }*/
 
     switchSeveralDays(){
         this.severalDays = !this.severalDays;
