@@ -22,13 +22,15 @@ export class AlertService {
           physicalParameter: 'temperature',
           signe: 'upper',
           value: '32',
-          allTheTime: true
+          allTheDay: true,
+          allDays: true
         },
         {
           physicalParameter: 'temperature',
           signe: 'lower',
           value: '17',
-          allTheTime: true
+          allTheDay: true,
+          allDays: true
         }
     ];
 

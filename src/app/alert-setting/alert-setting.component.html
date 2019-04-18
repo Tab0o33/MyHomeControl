@@ -4,7 +4,7 @@
         <span class="col-7  ">Mouvement</span>
         <i *ngIf="movementHidden " class="col-1 material-icons mt-3 ">keyboard_arrow_down</i>
         <i *ngIf="!movementHidden " class="col material-icons mt-3 ">keyboard_arrow_right</i>
-    </div> 
+    </div>
 
     <hr width="66%" align="left">
     <div class="collapse mb-4" [ngClass]="{'show': !movementHidden}" id="collapseExample">
@@ -35,11 +35,45 @@
         <ul class="list-group col-8">
             <div *ngFor="let alert of alerts; let i = index">
                 <div *ngIf="alert.physicalParameter === 'temperature'">
-                    <div *ngIf="1">
-                    <app-alert-item message="{{alert.physicalParameter}} {{alert.signe}} {{alert.value}} °C"
-                        [index]="i">
-
-                    </app-alert-item>
+                    <div *ngIf="alert.allDays">
+                        <div *ngIf="alert.allTheDay">
+                            <app-alert-item message="{{alert.physicalParameter}} {{alert.signe}} {{alert.value}} °C"
+                                [index]="i">
+                            </app-alert-item>
+                        </div>
+                        <div *ngIf="!alert.allTheDay">
+                            <app-alert-item message="{{alert.physicalParameter}} {{alert.signe}} {{alert.value}} °C.
+                                                     De {{alert.startTime}} à {{alert.endTime}}" [index]="i">
+                            </app-alert-item>
+                        </div>
+                    </div>
+                    <div *ngIf="!alert.allDays">
+                        <div *ngIf="alert.allTheDay">
+                            <div *ngIf="!alert.severalDays">
+                                <app-alert-item message="{{alert.physicalParameter}} {{alert.signe}} {{alert.value}} °C.
+                                    Le {{alert.oneDayDate}}" [index]="i">
+                                </app-alert-item>
+                            </div>
+                            <div *ngIf="alert.severalDays">
+                                <app-alert-item message="{{alert.physicalParameter}} {{alert.signe}} {{alert.value}} °C.
+                                Du {{alert.severalDaysStartDate}} au {{alert.severalDaysEndDate}}" [index]="i">
+                                </app-alert-item>
+                            </div>
+                        </div>
+                        <div *ngIf="!alert.allTheDay">
+                            <div *ngIf="!alert.severalDays">
+                                <app-alert-item message="{{alert.physicalParameter}} {{alert.signe}} {{alert.value}} °C.
+                                Le {{alert.oneDayDate}}, de {{alert.startTime}} à {{alert.endTime}}" [index]="i">
+                                </app-alert-item>
+                            </div>
+                            <div *ngIf="alert.severalDays">
+                                <app-alert-item
+                                    message="{{alert.physicalParameter}} {{alert.signe}} {{alert.value}} °C.
+                                Du {{alert.severalDaysStartDate}} au {{alert.severalDaysEndDate}}, de {{alert.startTime}} à {{alert.endTime}}"
+                                    [index]="i">
+                                </app-alert-item>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -49,7 +83,7 @@
 
     <button type="button" class="btn btn-primary my-5" *ngIf="!showForm" (click)="addAlertSwitcher()">Ajouter</button>
 
-    <div class="row my-5" ><!--*ngIf="showForm"-->
+    <div *ngIf="showForm" class="row my-5">
         <div class="col-sm-8 col-sm-offset-2">
 
             <div class="form-group">
