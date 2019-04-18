@@ -32,10 +32,10 @@
             <label class="form-check-label" for="allTheDayCbox">Toute la journée</label>
         </div>
     </div>
-    <div *ngIf="!allDays">
+    <div  [ngClass]="{'d-none': allDays}">
         <div class="form-check">
-            <input class="form-check-input" type="radio" name="oneOrSeveralDaysRbutton" id="oneDayRbutton"
-                value="option1" (change)="switchSeveralDays()" checked>
+            <input class="form-check-input" type="radio" name="severalDaysRbutton" id="oneDayRbutton"
+                value="oneDayRbutton" (change)="switchSeveralDays()" checked>
             <label class="form-check-label" for="oneDayRbutton">
                 Le :
             </label>
@@ -56,8 +56,8 @@
         </div>
 
         <div class="form-check">
-            <input class="form-check-input" type="radio" name="oneOrSeveralDaysRbutton" id="SeveralDaysRbutton"
-                value="option2" (change)="switchSeveralDays()">
+            <input class="form-check-input" type="radio" name="severalDaysRbutton" id="SeveralDaysRbutton"
+                value="SeveralDaysRbutton" (change)="switchSeveralDays()">
             <label class="form-check-label" for="SeveralDaysRbutton">
                 Du ... au ... :
             </label>
@@ -90,7 +90,7 @@
         </div>
     </div>
 
-    <div *ngIf="!allTheDay">
+    <div [ngClass]="{'d-none': allTheDay}">
         <label class="form-check-label" for="SeveralDaysRbutton">
             De ... à ... :
         </label>

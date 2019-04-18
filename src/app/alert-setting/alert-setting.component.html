@@ -35,7 +35,7 @@
         <ul class="list-group col-8">
             <div *ngFor="let alert of alerts; let i = index">
                 <div *ngIf="alert.physicalParameter === 'temperature'">
-                    <div *ngIf="">
+                    <div *ngIf="1">
                     <app-alert-item message="{{alert.physicalParameter}} {{alert.signe}} {{alert.value}} °C"
                         [index]="i">
 

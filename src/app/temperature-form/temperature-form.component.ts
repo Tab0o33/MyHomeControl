@@ -40,16 +40,48 @@ export class TemperatureFormComponent implements OnInit {
 
     onSubmit(form: NgForm) {
         console.log(form.value);
-        const startDate = form.value.severalDaysStartDatePicker._d;
-        const endDate = form.value.severalDaysEndDatePicker._d;
+        const allDays: boolean = form.value.allDaysCbox;
+        const allTheDay: boolean = form.value.allTheDayCbox;
+        var severalDays: boolean = false;
+        var oneDayDate: string = '';
+        var severalDaysStartDate = '';//form.value.severalDaysStartDatePicker._d;
+        var severalDaysEndDate = '';//form.value.severalDaysEndDatePicker._d;
+        var startTime: string = '';
+        var endTime: string = '';
 
-        const toto = {
+        var toto: any = {
             physicalParameter: 'temperature',
-            allTheTime: true,
-            startDate: startDate,
-            endDate: endDate
+            allDays: allDays,
+            allTheDay: allTheDay
         };
-        this.saveAlert(toto)
+
+        if (!allDays){
+            if (form.value.severalDaysStartDatePicker){
+                severalDays = true;
+                severalDaysStartDate = form.value.severalDaysStartDatePicker._d;
+                severalDaysEndDate = form.value.severalDaysEndDatePicker._d;
+                toto.severalDays = severalDays;
+                toto.severalDaysStartDate = severalDaysStartDate;
+                toto.severalDaysEndDate = severalDaysEndDate;
+            }
+            else{
+                severalDays = false;
+                oneDayDate = form.value.oneDayDatePicker._d;
+                toto.severalDays = severalDays;
+                toto.oneDayDate = oneDayDate;
+            }
+            
+        }
+
+        if (!allTheDay){
+            startTime = form.value.startTimePicker._d;
+            endTime = form.value.endTimePicker._d;
+            toto.startTime = startTime;
+            toto.endTime = endTime;
+        }
+        console.log(toto);
+        this.saveAlert(toto);
+
     }
 
     /*switchAllDays(event){
