@@ -4,7 +4,7 @@
         <label for="signe">
             Signe
         </label>
-        <select id="signe" class="form-control" name="signe" ngModel>
+        <select id="signe" class="form-control" name="signe" ngModel required>
             <option value="upper">supérieur</option>
             <option value="lower">inferieur</option>
         </select>
@@ -14,7 +14,7 @@
         <label for="tempValue">
             Valeur (°C)
         </label>
-        <input type="text" id="tempValue" class="form-control" name="tempValue" ngModel>
+        <input type="text" id="tempValue" class="form-control" name="tempValue" ngModel required>
     </div>
 
     <div>
@@ -127,6 +127,6 @@
 
 
 
-    <button class="btn btn-primary" type="submit">Enregistrer</button>
+    <button class="btn btn-primary disable" type="submit" disabled>Enregistrer</button>
 
 </form>
