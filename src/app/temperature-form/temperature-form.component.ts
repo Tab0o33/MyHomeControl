@@ -58,7 +58,8 @@ export class TemperatureFormComponent implements OnInit {
             signe: signe,
             value: value,
             allDays: allDays,
-            allTheDay: allTheDay
+            allTheDay: allTheDay,
+            message: 'Default message'
         };
 
         if (!allDays) {
@@ -71,10 +72,10 @@ export class TemperatureFormComponent implements OnInit {
                 toto.severalDaysEndDate = severalDaysEndDate;
             }
             else {
-                let jsdate = new Date(form.value.oneDayDatePicker._d.getTime());
-                jsdate.toLocaleTimeString('fr', { year: 'numeric', month: 'short', day: 'numeric' });
+                //let jsdate = new Date(form.value.oneDayDatePicker._d.getTime());
+                //jsdate.toLocaleTimeString('fr', { year: 'numeric', month: 'short', day: 'numeric' });
                 severalDays = false;
-                oneDayDate = form.value.oneDayDatePicker._d;
+                oneDayDate = form.value.oneDayDatePicker._d.getTime();
                 toto.severalDays = severalDays;
                 toto.oneDayDate = oneDayDate;
             }
@@ -88,6 +89,40 @@ export class TemperatureFormComponent implements OnInit {
             toto.startTime = startTime;
             toto.endTime = endTime;
         }
+        if (allDays) {
+            if (allTheDay) {
+                toto.message = 'Alerte si la température est ' + toto.signe + ' à ' + toto.value + '°C';
+            } else {
+                toto.message = 'Alerte si la température est ' + toto.signe + ' à ' + toto.value + '°C entre '
+                    + toto.startTime + ' et ' + toto.endTime;
+            }
+        }
+        else {
+            if (allTheDay) {
+                if (!toto.severalDays) {
+                    toto.message = 'Alerte si la température est ' + toto.signe + ' à ' + toto.value + '°C le '
+                        + toto.oneDayDate;
+                }
+                else {
+                    toto.message = 'Alerte si la température est ' + toto.signe + ' à ' + toto.value + '°C entre le '
+                        + toto.severalDaysStartDate + ' et le ' + toto.severalDaysEndDate;
+                }
+
+            } else {
+                if (!toto.severalDays) {
+                    toto.message = 'Alerte si la température est ' + toto.signe + ' à ' + toto.value + '°C le '
+                        + toto.oneDayDate + ' entre '
+                        + toto.startTime + ' et ' + toto.endTime;
+                }
+                else {
+                    toto.message = 'Alerte si la température est ' + toto.signe + ' à ' + toto.value + '°C entre le '
+                        + toto.severalDaysStartDate + ' et le ' + toto.severalDaysEndDate + ' entre '
+                        + toto.startTime + ' et ' + toto.endTime;
+                }
+            }
+        }
+
+
         console.log(toto);
         this.saveAlert(toto);
 

@@ -11,15 +11,8 @@
         <ul class="list-group col-8">
             <div *ngFor="let alert of alerts; let i = index">
                 <div *ngIf="alert.physicalParameter === 'movement'">
-                    <div *ngIf="alert.allTheTime === true">
-                        <app-alert-item message="Tous les jours entre {{alert.startDate}}  et {{alert.endDate}} "
-                            [index]="i">
-                        </app-alert-item>
-                    </div>
-                    <div *ngIf="alert.allTheTime === false">
-                        <app-alert-item message="Du {{alert.startDate}}  au {{alert.endDate}}" [index]="i">
-                        </app-alert-item>
-                    </div>
+                    <app-alert-item message="{{alert.message}}" [index]="i">
+                    </app-alert-item>
                 </div>
             </div>
         </ul>
@@ -35,46 +28,8 @@
         <ul class="list-group col-8">
             <div *ngFor="let alert of alerts; let i = index">
                 <div *ngIf="alert.physicalParameter === 'temperature'">
-                    <div *ngIf="alert.allDays">
-                        <div *ngIf="alert.allTheDay">
-                            <app-alert-item message="{{alert.physicalParameter}} {{alert.signe}} {{alert.value}} °C"
-                                [index]="i">
-                            </app-alert-item>
-                        </div>
-                        <div *ngIf="!alert.allTheDay">
-                            <app-alert-item message="{{alert.physicalParameter}} {{alert.signe}} {{alert.value}} °C.
-                                                     De {{alert.startTime}} à {{alert.endTime}}" [index]="i">
-                            </app-alert-item>
-                        </div>
-                    </div>
-                    <div *ngIf="!alert.allDays">
-                        <div *ngIf="alert.allTheDay">
-                            <div *ngIf="!alert.severalDays">
-                                <app-alert-item message="{{alert.physicalParameter}} {{alert.signe}} {{alert.value}} °C.
-                                    Le {{alert.oneDayDate}}" [index]="i">
-                                </app-alert-item>
-                            </div>
-                            <div *ngIf="alert.severalDays">
-                                <app-alert-item message="{{alert.physicalParameter}} {{alert.signe}} {{alert.value}} °C.
-                                Du {{alert.severalDaysStartDate}} au {{alert.severalDaysEndDate}}" [index]="i">
-                                </app-alert-item>
-                            </div>
-                        </div>
-                        <div *ngIf="!alert.allTheDay">
-                            <div *ngIf="!alert.severalDays">
-                                <app-alert-item message="{{alert.physicalParameter}} {{alert.signe}} {{alert.value}} °C.
-                                Le {{alert.oneDayDate}}, de {{alert.startTime}} à {{alert.endTime}}" [index]="i">
-                                </app-alert-item>
-                            </div>
-                            <div *ngIf="alert.severalDays">
-                                <app-alert-item
-                                    message="{{alert.physicalParameter}} {{alert.signe}} {{alert.value}} °C.
-                                Du {{alert.severalDaysStartDate}} au {{alert.severalDaysEndDate}}, de {{alert.startTime}} à {{alert.endTime}}"
-                                    [index]="i">
-                                </app-alert-item>
-                            </div>
-                        </div>
-                    </div>
+                    <app-alert-item message="{{alert.message}}" [index]="i">
+                    </app-alert-item>
                 </div>
             </div>
         </ul>
@@ -83,7 +38,7 @@
 
     <button type="button" class="btn btn-primary my-5" *ngIf="!showForm" (click)="addAlertSwitcher()">Ajouter</button>
 
-    <div *ngIf="showForm" class="row my-5" >
+    <div *ngIf="showForm" class="row my-5">
         <div class="col-sm-8 col-sm-offset-2">
 
             <div class="form-group">
