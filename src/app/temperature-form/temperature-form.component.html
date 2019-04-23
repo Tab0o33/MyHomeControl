@@ -4,7 +4,7 @@
         <label for="signe">
             Signe
         </label>
-        <select id="signe" class="form-control" name="signe" ngModel required>
+        <select id="signe" class="form-control" name="signe" [ngModel]="defaultSigne" required>
             <option value="upper">supérieur</option>
             <option value="lower">inferieur</option>
         </select>
@@ -46,7 +46,7 @@
                     <div class="input-group date" id="oneDayDatePicker" data-target-input="nearest">
                         <input type="text" NgTempusdominusBootstrapInput [options]="oneDayDatePickerOptions"
                             class="form-control datetimepicker-input" data-target="#oneDayDatePicker"
-                            name="oneDayDatePicker" ngModel />
+                        name="oneDayDatePicker" ngModel [required]="!allDays && !severalDays"/>
                         <div class="input-group-append" data-target="#oneDayDatePicker" data-toggle="datetimepicker">
                             <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                         </div>
@@ -68,7 +68,7 @@
                     <div class="input-group date" id="severalDaysStartDatePicker" data-target-input="nearest">
                         <input type="text" NgTempusdominusBootstrapInput [options]="severalDaysStartDatePickerOptions"
                             class="form-control datetimepicker-input" data-target="#severalDaysStartDatePicker"
-                            name="severalDaysStartDatePicker" ngModel />
+                            name="severalDaysStartDatePicker" ngModel [required]="!allDays && severalDays"/>
                         <div class="input-group-append" data-target="#severalDaysStartDatePicker" data-toggle="datetimepicker">
                             <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                         </div>
@@ -80,7 +80,7 @@
                     <div class="input-group date" id="severalDaysEndDatePicker" data-target-input="nearest">
                         <input type="text" NgTempusdominusBootstrapInput [options]="severalDaysEndDatePickerOptions"
                             class="form-control datetimepicker-input" data-target="#severalDaysEndDatePicker"
-                            name="severalDaysEndDatePicker" ngModel />
+                            name="severalDaysEndDatePicker" ngModel [required]="!allDays && severalDays"/>
                         <div class="input-group-append" data-target="#severalDaysEndDatePicker" data-toggle="datetimepicker">
                             <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                         </div>
@@ -100,7 +100,7 @@
                     <div class="input-group date" id="startTimePicker" data-target-input="nearest">
                         <input type="text" NgTempusdominusBootstrapInput [options]="startTimePickerOptions"
                             class="form-control datetimepicker-input" data-target="#startTimePicker"
-                            name="startTimePicker" ngModel />
+                            name="startTimePicker" ngModel [required]="!allTheDay"/>
                         <div class="input-group-append" data-target="#startTimePicker" data-toggle="datetimepicker">
                             <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                         </div>
@@ -114,7 +114,7 @@
                     <div class="input-group date" id="endTimePicker" data-target-input="nearest">
                         <input type="text" NgTempusdominusBootstrapInput [options]="endTimePickerOptions"
                             class="form-control datetimepicker-input" data-target="#endTimePicker"
-                            name="endTimePicker" ngModel />
+                            name="endTimePicker" ngModel [required]="!allTheDay"/>
                         <div class="input-group-append" data-target="#endTimePicker" data-toggle="datetimepicker">
                             <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                         </div>
@@ -127,6 +127,6 @@
 
 
 
-    <button class="btn btn-primary disable" type="submit" disabled>Enregistrer</button>
+    <button class="btn btn-primary" type="submit" [disabled]="f.invalid">Enregistrer</button>
 
 </form>

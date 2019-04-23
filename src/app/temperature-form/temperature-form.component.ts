@@ -13,6 +13,8 @@ export class TemperatureFormComponent implements OnInit {
     allTheDay: boolean = true;
     severalDays: boolean = false;
 
+    defaultSigne = 'upper';
+
     oneDayDatePickerOptions = {
         format: 'L'
     };
