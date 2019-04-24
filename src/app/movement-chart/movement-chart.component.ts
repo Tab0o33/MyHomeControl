@@ -8,7 +8,7 @@ import { Chart } from 'chart.js';
 })
 export class MovementChartComponent implements OnInit {
 
-  movementChart = [];
+  movementStackedChart = [];
 
   constructor() { }
 
@@ -23,7 +23,7 @@ export class MovementChartComponent implements OnInit {
         weatherDates.push(jsdate.toLocaleTimeString('en', { year: 'numeric', month: 'short', day: 'numeric' }))
     });
 
-    this.movementChart = new Chart('movementCanvas', {
+    this.movementStackedChart = new Chart('movementStackedCanvas', {
       type: 'line',
       data: {
         labels: weatherDates,
