@@ -12,7 +12,7 @@ export class AlertSettingComponent implements OnInit {
 
     alertSubscription: Subscription;
 
-    eventTargetValue: string;
+    physicalParameterInput: string ='';
 
     movementHidden: boolean = false;
     temperatureHidden: boolean = false;
@@ -35,10 +35,11 @@ export class AlertSettingComponent implements OnInit {
 
     addAlertSwitcher(){
         this.showForm = !this.showForm;
+        this.physicalParameterInput ='';
     }
 
     changePhysicalParameter(eventTargetValue){
-            this.eventTargetValue = eventTargetValue;
+            this.physicalParameterInput = eventTargetValue;
     }
 
     switchMovementHidden(){

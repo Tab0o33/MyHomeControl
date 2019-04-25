@@ -55,9 +55,9 @@
                 </select>
             </div>
 
-            <app-temperature-form *ngIf="eventTargetValue === 'temperature'"></app-temperature-form>
+            <app-temperature-form *ngIf="physicalParameterInput === 'temperature'" (submitted)="addAlertSwitcher()"></app-temperature-form>
 
-            <button class="btn btn-secondary " (click)="addAlertSwitcher()">Annuler</button>
+            <button *ngIf="physicalParameterInput === ''" class="btn btn-secondary " (click)="addAlertSwitcher()">Annuler</button>
         </div>
     </div>
 

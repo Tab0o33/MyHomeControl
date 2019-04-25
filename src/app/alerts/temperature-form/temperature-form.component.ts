@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { AlertService } from '../alert.service';
 
@@ -20,6 +20,8 @@ export class TemperatureFormComponent implements OnInit {
     severalDaysEndDatePickerOptions = { format: 'L' };
     startTimePickerOptions = { format: 'LT' };
     endTimePickerOptions = { format: 'LT' };
+
+    @Output() submitted = new EventEmitter<boolean>();
 
     constructor(private alertService: AlertService) { }
 
@@ -122,6 +124,11 @@ export class TemperatureFormComponent implements OnInit {
 
     saveAlert(alert) {
         this.alertService.addOneAlert(alert);
+        this.submitted.emit();
+    }
+
+    cancel(){
+        this.submitted.emit();
     }
 
 
