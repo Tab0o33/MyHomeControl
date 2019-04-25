@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { AlertService } from '../services/alert.service';
+import { AlertService } from '../alert.service';
 
 @Component({
     selector: 'app-temperature-form',

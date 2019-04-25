@@ -1,13 +1,13 @@
 ////https://tempusdominus.github.io/bootstrap-4/Usage/
 
 import { Component, OnInit, Input } from '@angular/core';
-import { AlertService } from '../services/alert.service';
+import { AlertService } from '../alert.service';
 
 @Component({
   selector: 'app-alert-item',
   templateUrl: './alert-item.component.html',
   styleUrls: ['./alert-item.component.scss',
-              '../../material-design.css']
+              '../../../material-design.css']
 })
 export class AlertItemComponent implements OnInit {
 
