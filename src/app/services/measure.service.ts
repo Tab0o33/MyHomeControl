@@ -50,9 +50,6 @@ export class MeasureService {
         },
         (error) => {
           console.log(error);
-        },
-        () => {
-          console.log('Observable complete!');
         }
       );
     }

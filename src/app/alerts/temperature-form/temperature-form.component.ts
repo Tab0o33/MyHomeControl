@@ -34,11 +34,11 @@ export class TemperatureFormComponent implements OnInit {
         const signe: string = form.value.signe;
         const value: number = form.value.tempValue;
         var severalDays: boolean = false;
-        var oneDayDate: string;
-        var severalDaysStartDate = '';
-        var severalDaysEndDate = '';
-        var startTime: string = '';
-        var endTime: string = '';
+        var oneDayDate: Date;
+        var severalDaysStartDate: Date;
+        var severalDaysEndDate: Date;
+        var startTime: Date;
+        var endTime: Date;
 
         //Alert initilization
         var alert: any = {
@@ -54,22 +54,22 @@ export class TemperatureFormComponent implements OnInit {
         if (!allDays) {
             if (form.value.severalDaysStartDatePicker) {
                 severalDays = true;
-                severalDaysStartDate = form.value.severalDaysStartDatePicker;
-                severalDaysEndDate = form.value.severalDaysEndDatePicker;
+                severalDaysStartDate = new Date(form.value.severalDaysStartDatePicker._d.getTime());
+                severalDaysEndDate = new Date(form.value.severalDaysEndDatePicker._d.getTime());
                 alert.severalDays = severalDays;
                 alert.severalDaysStartDate = severalDaysStartDate;
                 alert.severalDaysEndDate = severalDaysEndDate;
             }
             else {
                 severalDays = false;
-                oneDayDate = form.value.oneDayDatePicker;
+                oneDayDate = new Date(form.value.oneDayDatePicker._d.getTime());
                 alert.severalDays = severalDays;
                 alert.oneDayDate = oneDayDate;
             }
         }
         if (!allTheDay) {
-            startTime = form.value.startTimePicker;
-            endTime = form.value.endTimePicker;
+            startTime = new Date(form.value.startTimePicker._d);
+            endTime = new Date(form.value.endTimePicker._d);
             alert.startTime = startTime;
             alert.endTime = endTime;
         }
@@ -81,35 +81,35 @@ export class TemperatureFormComponent implements OnInit {
                     + ' à ' + alert.value + '°C';
             } else {
                 alert.message = 'Alerte si la température est ' + ((alert.signe === 'upper') ? 'suppérieure' : 'inférieure')
-                    + ' à ' + alert.value + '°C entre ' + alert.startTime._d.getHours() + 'h' + alert.startTime._d.getMinutes()
-                    + 'min et ' + alert.endTime._d.getHours() + 'h' + alert.endTime._d.getMinutes() + 'min';
+                    + ' à ' + alert.value + '°C entre ' + alert.startTime.getHours() + 'h' + alert.startTime.getMinutes()
+                    + 'min et ' + alert.endTime.getHours() + 'h' + alert.endTime.getMinutes() + 'min';
             }
         }
         else {
             if (allTheDay) {
                 if (!alert.severalDays) {
                     alert.message = 'Alerte si la température est ' + ((alert.signe === 'upper') ? 'suppérieure' : 'inférieure')
-                        + ' à ' + alert.value + '°C le ' + alert.oneDayDate._d.toLocaleDateString('fr', { year: 'numeric', month: 'long', day: 'numeric' });
+                        + ' à ' + alert.value + '°C le ' + alert.oneDayDate.toLocaleDateString('fr', { year: 'numeric', month: 'long', day: 'numeric' });
                 }
                 else {
                     alert.message = 'Alerte si la température est ' + ((alert.signe === 'upper') ? 'suppérieure' : 'inférieure')
-                        + ' à ' + alert.value + '°C entre le ' + alert.severalDaysStartDate._d.toLocaleDateString('fr', { year: 'numeric', month: 'long', day: 'numeric' })
-                        + ' et le ' + alert.severalDaysEndDate._d.toLocaleDateString('fr', { year: 'numeric', month: 'long', day: 'numeric' });
+                        + ' à ' + alert.value + '°C entre le ' + alert.severalDaysStartDate.toLocaleDateString('fr', { year: 'numeric', month: 'long', day: 'numeric' })
+                        + ' et le ' + alert.severalDaysEndDate.toLocaleDateString('fr', { year: 'numeric', month: 'long', day: 'numeric' });
                 }
 
             } else {
                 if (!alert.severalDays) {
                     alert.message = 'Alerte si la température est ' + ((alert.signe === 'upper') ? 'suppérieure' : 'inférieure')
-                        + ' à ' + alert.value + '°C le ' + alert.oneDayDate._d.toLocaleDateString('fr', { year: 'numeric', month: 'long', day: 'numeric' })
-                        + ' entre ' + alert.startTime._d.getHours() + 'h' + alert.startTime._d.getMinutes() + 'min et ' + alert.endTime._d.getHours() + 'h'
-                        + alert.endTime._d.getMinutes() + 'min';
+                        + ' à ' + alert.value + '°C le ' + alert.oneDayDate.toLocaleDateString('fr', { year: 'numeric', month: 'long', day: 'numeric' })
+                        + ' entre ' + alert.startTime.getHours() + 'h' + alert.startTime.getMinutes() + 'min et ' + alert.endTime.getHours() + 'h'
+                        + alert.endTime.getMinutes() + 'min';
                 }
                 else {
                     alert.message = 'Alerte si la température est ' + ((alert.signe === 'upper') ? 'suppérieure' : 'inférieure')
-                        + ' à ' + alert.value + '°C entre le ' + alert.severalDaysStartDate._d.toLocaleDateString('fr', { year: 'numeric', month: 'long', day: 'numeric' })
-                        + ' et le ' + alert.severalDaysEndDate._d.toLocaleDateString('fr', { year: 'numeric', month: 'long', day: 'numeric' })
-                        + ' entre ' + alert.startTime._d.getHours() + 'h' + alert.startTime._d.getMinutes()
-                        + 'min et ' + alert.endTime._d.getHours() + 'h' + alert.endTime._d.getMinutes() + 'min';
+                        + ' à ' + alert.value + '°C entre le ' + alert.severalDaysStartDate.toLocaleDateString('fr', { year: 'numeric', month: 'long', day: 'numeric' })
+                        + ' et le ' + alert.severalDaysEndDate.toLocaleDateString('fr', { year: 'numeric', month: 'long', day: 'numeric' })
+                        + ' entre ' + alert.startTime.getHours() + 'h' + alert.startTime.getMinutes()
+                        + 'min et ' + alert.endTime.getHours() + 'h' + alert.endTime.getMinutes() + 'min';
                 }
             }
         }
@@ -123,7 +123,9 @@ export class TemperatureFormComponent implements OnInit {
     }
 
     saveAlert(alert) {
+        console.log(alert);
         this.alertService.addOneAlert(alert);
+        
         this.submitted.emit();
     }
 

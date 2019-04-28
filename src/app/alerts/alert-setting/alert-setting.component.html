@@ -1,5 +1,6 @@
 <div class="container mt-3  bg-light">
 
+    <!--Display movement alerts-->
     <div (click)="switchMovementHidden()" class="title row">
         <span class="col-7  ">Mouvement</span>
         <i *ngIf="movementHidden " class="col-1 material-icons mt-3 ">keyboard_arrow_down</i>
@@ -16,8 +17,10 @@
                 </div>
             </div>
         </ul>
+        <div *ngIf="countMovementAlerts === 0">Aucune alerte de mouvement</div>
     </div>
 
+    <!--Display temperature alerts-->
     <div (click)="switchTemperatureHidden()" class="title row">
         <span class="col-7">Température</span>
         <i *ngIf="temperatureHidden " class="col-1 material-icons mt-3 ">keyboard_arrow_down</i>
@@ -33,6 +36,26 @@
                 </div>
             </div>
         </ul>
+        <div *ngIf="countTemperatureAlerts === 0">Aucune alerte de temperature</div>
+    </div>
+
+    <!--Display pressure alerts-->
+    <div (click)="switchPressureHidden()" class="title row">
+        <span class="col-7">Pression</span>
+        <i *ngIf="pressureHidden " class="col-1 material-icons mt-3 ">keyboard_arrow_down</i>
+        <i *ngIf="!pressureHidden " class="col material-icons mt-3 ">keyboard_arrow_right</i>
+    </div>
+    <hr width="66%" align="left">
+    <div class="collapse " [ngClass]="{'show': !pressureHidden}" id="collapseExample">
+        <ul class="list-group col-8">
+            <div *ngFor="let alert of alerts; let i = index">
+                <div *ngIf="alert.physicalParameter === 'pressure'">
+                    <app-alert-item message="{{alert.message}}" [index]="i">
+                    </app-alert-item>
+                </div>
+            </div>
+        </ul>
+        <div *ngIf="countPressureAlerts === 0">Aucune alerte de pression</div>
     </div>
 
 

@@ -3,19 +3,26 @@ import { AlertService } from '../alert.service';
 import { Subscription } from 'rxjs/Subscription';
 
 @Component({
-  selector: 'app-alert-setting',
-  templateUrl: './alert-setting.component.html',
-  styleUrls: ['./alert-setting.component.scss',
-              '../../../material-design.css']
+    selector: 'app-alert-setting',
+    templateUrl: './alert-setting.component.html',
+    styleUrls: ['./alert-setting.component.scss',
+        '../../../material-design.css']
 })
 export class AlertSettingComponent implements OnInit {
 
     alertSubscription: Subscription;
 
-    physicalParameterInput: string ='';
+    physicalParameterInput: string = '';
 
     movementHidden: boolean = false;
     temperatureHidden: boolean = false;
+    pressureHidden: boolean = false;
+
+    countMovementAlerts: number = 0;
+    countTemperatureAlerts: number = 0;
+    countPressureAlerts: number = 0;
+    countHumidityAlerts: number = 0;
+    countLuminosityAlerts: number = 0;
 
     alerts = [];
 
@@ -25,29 +32,59 @@ export class AlertSettingComponent implements OnInit {
     constructor(private alertService: AlertService) { }
 
     ngOnInit() {
+
         this.alertSubscription = this.alertService.alertsSubject.subscribe(
             (alerts: any[]) => {
-              this.alerts = alerts;
+                this.alerts = alerts;
+
+                this.alerts.forEach((element) => {
+                    switch (element.physicalParameter) {
+                        case 'movement':
+                            this.countMovementAlerts++;
+                            console.log('this.countMovementAlerts++');
+                            break;
+                        case 'temperature':
+                            this.countTemperatureAlerts++;
+                            break;
+                        case 'pressure':
+                            this.countPressureAlerts++;
+                            break;
+                        case 'humidity':
+                            this.countHumidityAlerts++;
+                            break;
+                        case 'luminosity':
+                            this.countLuminosityAlerts++;
+                            break;
+                        default:
+                            console.error("An alert have a not expected physical parameter value");
+                    }
+                });
+
             }
-          );
-          this.alertService.emitAlertSubject();
+        );
+        this.alertService.emitAlertSubject();
+
     }
 
-    addAlertSwitcher(){
+    addAlertSwitcher() {
         this.showForm = !this.showForm;
-        this.physicalParameterInput ='';
+        this.physicalParameterInput = '';
     }
 
-    changePhysicalParameter(eventTargetValue){
-            this.physicalParameterInput = eventTargetValue;
+    changePhysicalParameter(eventTargetValue) {
+        this.physicalParameterInput = eventTargetValue;
     }
 
-    switchMovementHidden(){
-        this.movementHidden = !this.movementHidden
+    switchMovementHidden() {
+        this.movementHidden = !this.movementHidden;
     }
 
-    switchTemperatureHidden(){
-        this.temperatureHidden = !this.temperatureHidden
+    switchTemperatureHidden() {
+        this.temperatureHidden = !this.temperatureHidden;
+    }
+
+    switchPressureHidden() {
+        this.pressureHidden = !this.pressureHidden;
     }
 
 }
