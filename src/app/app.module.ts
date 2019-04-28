@@ -17,8 +17,9 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AngularFireModule } from 'angularfire2'; 
 import { AngularFireDatabaseModule } from 'angularfire2/database';
-//import { AngularFireAuthModule } from 'angularfire2/auth';
 //import { AngularFireAuth } from 'angularfire2/auth';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+
 
 import { environment } from '../environments/environment';
 import { ComponentModule } from './component.module';
@@ -46,7 +47,8 @@ const appRoutes: Routes = [
     HttpClientModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
-    //AngularFireAuthModule,    
+    AngularFireAuthModule,  
+    //AngularFireAuth,  
     RouterModule.forRoot(appRoutes),
     ComponentModule
   ],

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
+import { listenToElementOutputs } from '@angular/core/src/view/element';
 
 @Component({
   selector: 'app-auth',
@@ -18,9 +19,9 @@ export class AuthComponent implements OnInit {
   }
 
   onSignIn() {
-    this.authService.signIn().then(
+    this.authService.signInUser('toto@toto.com','tototo').then(
       () => {
-        console.log('Sign in successful!');
+        console.log('login successful!');
         this.authStatus = this.authService.isAuth;
         this.router.navigate(['currentMeasure']);
       }
@@ -28,7 +29,8 @@ export class AuthComponent implements OnInit {
   }
 
   onSignOut() {
-    this.authService.signOut();
+    this.authService.signOutUser();
+    console.log('logout successful!');
     this.authStatus = this.authService.isAuth;
   }
 

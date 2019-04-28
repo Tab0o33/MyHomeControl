@@ -1,21 +1,47 @@
+import { Injectable } from '@angular/core';
+import { AngularFireAuth } from 'angularfire2/auth';
+import * as firebase from 'firebase/app';
+
+@Injectable()
 export class AuthService {
 
     isAuth = false;
-  
-    signIn() {
-      return new Promise(
-        (resolve, reject) => {
-          setTimeout(
-            () => {
-              this.isAuth = true;
-              resolve(true);
-            }, 2000
-          );
-        }
-      );
+
+    constructor(public afAuth: AngularFireAuth) { }
+
+    createNewUser(email: string, password: string) {
+        return new Promise(
+          (resolve, reject) => {
+            firebase.auth().createUserWithEmailAndPassword(email, password).then(
+              () => {
+                resolve();
+              },
+              (error) => {
+                reject(error);
+              }
+            );
+          }
+        );
     }
-  
-    signOut() {
-      this.isAuth = false;
+
+    signInUser(email: string, password: string) {
+        return new Promise(
+            (resolve, reject) => {
+                firebase.auth().signInWithEmailAndPassword(email, password).then(
+                    () => {
+                        this.isAuth = true;
+                        resolve();
+                    },
+                    (error) => {
+                        reject(error);
+                    }
+                );
+            }
+        );
     }
-  }
+
+    signOutUser() {
+        firebase.auth().signOut();
+        this.isAuth = false;
+    }
+}

@@ -17,6 +17,8 @@ export class AlertSettingComponent implements OnInit {
     movementHidden: boolean = false;
     temperatureHidden: boolean = false;
     pressureHidden: boolean = false;
+    humidityHidden: boolean = false;
+    luminosityHidden: boolean = false;
 
     countMovementAlerts: number = 0;
     countTemperatureAlerts: number = 0;
@@ -41,7 +43,6 @@ export class AlertSettingComponent implements OnInit {
                     switch (element.physicalParameter) {
                         case 'movement':
                             this.countMovementAlerts++;
-                            console.log('this.countMovementAlerts++');
                             break;
                         case 'temperature':
                             this.countTemperatureAlerts++;
@@ -85,6 +86,14 @@ export class AlertSettingComponent implements OnInit {
 
     switchPressureHidden() {
         this.pressureHidden = !this.pressureHidden;
+    }
+
+    switchHumidityHidden() {
+        this.humidityHidden = !this.humidityHidden;
+    }
+
+    switchLuminosityHidden() {
+        this.luminosityHidden = !this.luminosityHidden;
     }
 
 }

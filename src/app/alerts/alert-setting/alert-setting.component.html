@@ -27,7 +27,7 @@
         <i *ngIf="!temperatureHidden " class="col material-icons mt-3 ">keyboard_arrow_right</i>
     </div>
     <hr width="66%" align="left">
-    <div class="collapse " [ngClass]="{'show': !temperatureHidden}" id="collapseExample">
+    <div class="collapse mb-4" [ngClass]="{'show': !temperatureHidden}" id="collapseExample">
         <ul class="list-group col-8">
             <div *ngFor="let alert of alerts; let i = index">
                 <div *ngIf="alert.physicalParameter === 'temperature'">
@@ -46,7 +46,7 @@
         <i *ngIf="!pressureHidden " class="col material-icons mt-3 ">keyboard_arrow_right</i>
     </div>
     <hr width="66%" align="left">
-    <div class="collapse " [ngClass]="{'show': !pressureHidden}" id="collapseExample">
+    <div class="collapse mb-4" [ngClass]="{'show': !pressureHidden}" id="collapseExample">
         <ul class="list-group col-8">
             <div *ngFor="let alert of alerts; let i = index">
                 <div *ngIf="alert.physicalParameter === 'pressure'">
@@ -56,6 +56,44 @@
             </div>
         </ul>
         <div *ngIf="countPressureAlerts === 0">Aucune alerte de pression</div>
+    </div>
+
+    <!--Display humidity alerts-->
+    <div (click)="switchHumidityHidden()" class="title row">
+        <span class="col-7">Humidité</span>
+        <i *ngIf="humidityHidden " class="col-1 material-icons mt-3 ">keyboard_arrow_down</i>
+        <i *ngIf="!humidityHidden " class="col material-icons mt-3 ">keyboard_arrow_right</i>
+    </div>
+    <hr width="66%" align="left">
+    <div class="collapse mb-4" [ngClass]="{'show': !humidityHidden}" id="collapseExample">
+        <ul class="list-group col-8">
+            <div *ngFor="let alert of alerts; let i = index">
+                <div *ngIf="alert.physicalParameter === 'humidity'">
+                    <app-alert-item message="{{alert.message}}" [index]="i">
+                    </app-alert-item>
+                </div>
+            </div>
+        </ul>
+        <div *ngIf="countHumidityAlerts === 0">Aucune alerte d'humidité</div>
+    </div>
+
+    <!--Display luminosity alerts-->
+    <div (click)="switchLuminosityHidden()" class="title row">
+        <span class="col-7">Luminosité</span>
+        <i *ngIf="luminosityHidden " class="col-1 material-icons mt-3 ">keyboard_arrow_down</i>
+        <i *ngIf="!luminosityHidden " class="col material-icons mt-3 ">keyboard_arrow_right</i>
+    </div>
+    <hr width="66%" align="left">
+    <div class="collapse mb-4" [ngClass]="{'show': !luminosityHidden}" id="collapseExample">
+        <ul class="list-group col-8">
+            <div *ngFor="let alert of alerts; let i = index">
+                <div *ngIf="alert.physicalParameter === 'luminosity'">
+                    <app-alert-item message="{{alert.message}}" [index]="i">
+                    </app-alert-item>
+                </div>
+            </div>
+        </ul>
+        <div *ngIf="countLuminosityAlerts === 0">Aucune alerte de luminosité</div>
     </div>
 
 
