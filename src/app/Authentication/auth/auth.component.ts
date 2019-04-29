@@ -11,7 +11,7 @@ import { listenToElementOutputs } from '@angular/core/src/view/element';
 export class AuthComponent implements OnInit {
 
   authStatus: boolean;
-  newAccount: boolean = false;
+  newAccount: boolean = true;
 
   constructor(private authService: AuthService, private router: Router) { }
 

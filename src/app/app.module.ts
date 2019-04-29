@@ -31,7 +31,7 @@ const appRoutes: Routes = [
   { path: 'history'/*, canActivate: [AuthGuard]*/, component: MeasureHistoryComponent },
   { path: 'history/:id'/*, canActivate: [AuthGuard]*/, component: MeasureHistoryComponent },
   { path: 'alerts'/*, canActivate: [AuthGuard]*/, component: AlertSettingComponent },
-  { path: ''/*, canActivate: [AuthGuard]*/, component: CurrentMeasureComponent },
+  { path: ''/*, canActivate: [AuthGuard]*/, component: AuthComponent },
   { path: 'not-found', component: FourOhFourComponent },
   { path: '**', redirectTo: 'not-found' } 
 ];
