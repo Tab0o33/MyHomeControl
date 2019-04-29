@@ -14,6 +14,7 @@ export class AuthService {
           (resolve, reject) => {
             firebase.auth().createUserWithEmailAndPassword(email, password).then(
               () => {
+                console.log('createNewUser successful!');
                 resolve();
               },
               (error) => {
@@ -29,6 +30,7 @@ export class AuthService {
             (resolve, reject) => {
                 firebase.auth().signInWithEmailAndPassword(email, password).then(
                     () => {
+                        console.log('signInUser successful!');
                         this.isAuth = true;
                         resolve();
                     },
