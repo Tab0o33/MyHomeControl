@@ -20,8 +20,8 @@
                 type="submit"
                 [disabled]="signinForm.invalid">Connexion</button>
         <button class="btn btn-link ml-2"
-                type="button">Créer mon compte</button>
+                type="button" (click)="onLinkClicked()">Créer mon compte</button>
       </form>
-      <p class="text-danger">{{ errorMessage }}</p>
+      <p class="text-danger mt-2">{{ errorMessage }}</p>
     </div>
   </div>

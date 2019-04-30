@@ -1,9 +1,9 @@
 <!--<div style="background-image: url('./assets/digital3.jpg');background-attachment: fixed; background-size:cover;
 background-repeat: no-repeat; height: 800px;">-->
-    <div class="container  mb-4 bg-white shadow-sm border rounded p-4"  style="margin-top: 100px">
+    <div class="container mt-5 bg-white shadow-sm border rounded p-4 col-11 col-sm-9 col-md-9 col-lg-8 col-xl-7">
 
-        <app-signin *ngIf="!newAccount"></app-signin>
-        <app-signup *ngIf="newAccount"></app-signup>
+        <app-signin *ngIf="isExistingUser" (linkClicked)="switchAuthComponent()"></app-signin>
+        <app-signup *ngIf="!isExistingUser" (linkClicked)="switchAuthComponent()"></app-signup>
 
     </div>
 <!--</div>
