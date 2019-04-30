@@ -44,6 +44,7 @@ export class AuthService {
 
     signOutUser() {
         firebase.auth().signOut();
+        console.log('signOutUser successful!');
         this.isAuth = false;
     }
 }

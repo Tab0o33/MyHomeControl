@@ -1,10 +1,16 @@
 import { Component } from '@angular/core';
+import { AuthService } from './Authentication/auth.service';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+    selector: 'app-root',
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'MyHomeControl';
+
+    constructor(public authService: AuthService){}
+
+    signOut() {
+        this.authService.signOutUser();
+    }
 }
