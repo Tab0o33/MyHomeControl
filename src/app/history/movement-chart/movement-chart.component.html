@@ -3,6 +3,23 @@
     Au jour : polar-area, 4 data (1/6h)
     Au quart de jour : courbe ou baton (bar) sur la journé (1/xmin) (1mvmt=1s)
 -->
-<div class="w-75">
-    <canvas id="movementStackedCanvas">{{ movementStackedChart }}</canvas>
+
+<nav class="nav flex-column float-right border">
+    <button type="button" class="nav-link btn btn-info" [ngClass]="{'active': steppedActive}"
+        (click)="switchStepped()">Semaine</button>
+    <button type="button" class="nav-link btn btn-info" [ngClass]="{'active': stackedActive}"
+        (click)="switchStacked()">Jour</button>
+    <button type="button" class="nav-link btn btn-info" [ngClass]="{'active': pieActive}"
+        (click)="switchPie()">Heurs</button>
+</nav>
+
+
+<div class="row w-75 " [hidden]="!steppedActive">
+    <canvas id="movementStackedWeekCanvas">{{ movementStackedWeekChart }}</canvas>
+</div>
+<div class="row w-75" [hidden]="!stackedActive">
+    <canvas id="movementPolarAreaCanvas">{{ movementPolarAreaChart }}</canvas>
+</div>
+<div class="row w-75" [hidden]="!pieActive">
+    <canvas id="movementStackedHoursCanvas">{{ movementStackedHoursChart }}</canvas>
 </div>
