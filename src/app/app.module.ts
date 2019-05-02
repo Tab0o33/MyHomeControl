@@ -8,6 +8,8 @@ import { MeasureHistoryComponent } from './history/measure-history/measure-histo
 import { AlertSettingComponent } from './alerts/alert-setting/alert-setting.component'; 
 import { FourOhFourComponent } from './four-oh-four/four-oh-four.component';
 import { AuthComponent } from './Authentication/auth/auth.component';
+import { ProfilComponent } from './profil/profil.component';
+import { ParametersComponent } from './parameters/parameters.component';
 
 //Service
 import { AlertService } from './alerts/alert.service';
@@ -17,13 +19,11 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AngularFireModule } from 'angularfire2'; 
 import { AngularFireDatabaseModule } from 'angularfire2/database';
-//import { AngularFireAuth } from 'angularfire2/auth';
-import { AngularFireAuthModule } from 'angularfire2/auth';
+//import { AngularFireAuthModule } from 'angularfire2/auth';
 
 
 import { environment } from '../environments/environment';
 import { ComponentModule } from './component.module';
-import { AuthGuard } from './Authentication/auth-guard.service';
  
 const appRoutes: Routes = [
   { path: 'auth', component: AuthComponent },
@@ -31,6 +31,8 @@ const appRoutes: Routes = [
   { path: 'history'/*, canActivate: [AuthGuard]*/, component: MeasureHistoryComponent },
   { path: 'history/:id'/*, canActivate: [AuthGuard]*/, component: MeasureHistoryComponent },
   { path: 'alerts'/*, canActivate: [AuthGuard]*/, component: AlertSettingComponent },
+  { path: 'profil'/*, canActivate: [AuthGuard]*/, component: ProfilComponent },
+  { path: 'parameters'/*, canActivate: [AuthGuard]*/, component: ParametersComponent },
   { path: ''/*, canActivate: [AuthGuard]*/, component: AuthComponent },
   { path: 'not-found', component: FourOhFourComponent },
   { path: '**', redirectTo: 'not-found' } 
@@ -40,6 +42,8 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     CurrentMeasureComponent,
+    ProfilComponent,
+    ParametersComponent,
     FourOhFourComponent,
   ],
   imports: [
@@ -47,8 +51,7 @@ const appRoutes: Routes = [
     HttpClientModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
-    AngularFireAuthModule,  
-    //AngularFireAuth,  
+    //AngularFireAuthModule,
     RouterModule.forRoot(appRoutes),
     ComponentModule
   ],

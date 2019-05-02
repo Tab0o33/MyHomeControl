@@ -1,13 +1,15 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class AuthService {
 
     isAuth = false;
 
-    constructor(public afAuth: AngularFireAuth) { }
+    constructor(public afAuth: AngularFireAuth,
+                public router: Router) { }
 
     createNewUser(email: string, password: string) {
         return new Promise(
@@ -45,6 +47,7 @@ export class AuthService {
     signOutUser() {
         firebase.auth().signOut();
         console.log('signOutUser successful!');
+        this.router.navigate(['/auth']);
         this.isAuth = false;
     }
 }

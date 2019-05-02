@@ -8,6 +8,9 @@ import { AuthGuard } from './auth-guard.service';
 import { SigninComponent } from './signin/signin.component';
 import { SignupComponent } from './signup/signup.component';
 
+import { AngularFireModule } from 'angularfire2'; 
+import { AngularFireAuthModule } from 'angularfire2/auth';
+
 @NgModule({
     declarations: [
         AuthComponent,
@@ -17,7 +20,9 @@ import { SignupComponent } from './signup/signup.component';
     imports: [
         BrowserModule,
         FormsModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        AngularFireAuthModule,
+        AngularFireModule
     ],
     exports: [
     ],

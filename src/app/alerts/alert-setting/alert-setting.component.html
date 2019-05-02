@@ -2,7 +2,7 @@
 
     <!--Display movement alerts-->
     <div (click)="switchMovementHidden()" class="title row">
-        <span class="col-7  ">Mouvement</span>
+        <span class="col-7  ">Mouvement ({{countMovementAlerts}})</span>
         <i *ngIf="movementHidden " class="col-1 material-icons mt-3 ">keyboard_arrow_down</i>
         <i *ngIf="!movementHidden " class="col material-icons mt-3 ">keyboard_arrow_right</i>
     </div>
@@ -22,7 +22,7 @@
 
     <!--Display temperature alerts-->
     <div (click)="switchTemperatureHidden()" class="title row">
-        <span class="col-7">Température</span>
+        <span class="col-7">Température ({{countTemperatureAlerts}})</span>
         <i *ngIf="temperatureHidden " class="col-1 material-icons mt-3 ">keyboard_arrow_down</i>
         <i *ngIf="!temperatureHidden " class="col material-icons mt-3 ">keyboard_arrow_right</i>
     </div>
@@ -41,7 +41,7 @@
 
     <!--Display pressure alerts-->
     <div (click)="switchPressureHidden()" class="title row">
-        <span class="col-7">Pression</span>
+        <span class="col-7">Pression ({{countPressureAlerts}})</span>
         <i *ngIf="pressureHidden " class="col-1 material-icons mt-3 ">keyboard_arrow_down</i>
         <i *ngIf="!pressureHidden " class="col material-icons mt-3 ">keyboard_arrow_right</i>
     </div>
@@ -60,7 +60,7 @@
 
     <!--Display humidity alerts-->
     <div (click)="switchHumidityHidden()" class="title row">
-        <span class="col-7">Humidité</span>
+        <span class="col-7">Humidité ({{countHumidityAlerts}})</span>
         <i *ngIf="humidityHidden " class="col-1 material-icons mt-3 ">keyboard_arrow_down</i>
         <i *ngIf="!humidityHidden " class="col material-icons mt-3 ">keyboard_arrow_right</i>
     </div>
@@ -79,7 +79,7 @@
 
     <!--Display luminosity alerts-->
     <div (click)="switchLuminosityHidden()" class="title row">
-        <span class="col-7">Luminosité</span>
+        <span class="col-7">Luminosité ({{countLuminosityAlerts}})</span>
         <i *ngIf="luminosityHidden " class="col-1 material-icons mt-3 ">keyboard_arrow_down</i>
         <i *ngIf="!luminosityHidden " class="col material-icons mt-3 ">keyboard_arrow_right</i>
     </div>

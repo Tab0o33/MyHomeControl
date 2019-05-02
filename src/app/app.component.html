@@ -16,7 +16,7 @@
             </li>
 
         </ul>
-        
+
 
     </div>
     <div class="dropdown show float-right">
@@ -25,12 +25,21 @@
             <img src="./assets/images/avatar-young-business-man.jpg" width="40" height="40" title="White flower"
                 alt="Flower" class="rounded-circle">
         </a>
-        <div class="dropdown-menu  dropdown-menu-right" aria-labelledby="dropdownMenuLink">
-            <a class="dropdown-item" routerLink="history">Profile</a>
+        <div class="dropdown-menu  dropdown-menu-right container " aria-labelledby="dropdownMenuLink">
+            <div class="row  ml-2">
+                <i class="col-2  material-icons px-0 py-0">account_circle</i>
+                <a class="dropdown-item col  px-0 py-0" routerLink="profil">Profile</a>
+            </div>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" routerLink="history">Paramètres</a>
+            <div class="row   ml-2">
+                <i class="col-2  material-icons px-0 py-0">settings</i>
+                <a class="dropdown-item col-2  px-0 py-0" routerLink="parameters">Paramètres</a>
+            </div>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" (click)="signOut()">Déconnection</a>
+            <div class="row  ml-2">
+                <i class="col-2  material-icons px-0 py-0">exit_to_app</i>
+                <a class="dropdown-item col-2  px-0 py-0" (click)="signOut()">Déconnection</a>
+            </div>
         </div>
     </div>
 </nav>

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
-import { listenToElementOutputs } from '@angular/core/src/view/element';
 
 @Component({
     selector: 'app-auth',
@@ -12,8 +11,6 @@ export class AuthComponent implements OnInit {
 
     authStatus: boolean;
     isExistingUser: boolean = true;
-
-    
 
     constructor(private authService: AuthService, private router: Router) { }
 
@@ -40,7 +37,5 @@ export class AuthComponent implements OnInit {
     switchAuthComponent(){
         this.isExistingUser = !this.isExistingUser;
     }
-
-    
     
 }
