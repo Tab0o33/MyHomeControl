@@ -30,6 +30,8 @@ export class AlertSettingComponent implements OnInit {
 
     showForm = false;
 
+    formPhysicalParameter: string = '';
+    defaultPhyParam: string = 'movement';
 
     constructor(private alertService: AlertService) { }
 

@@ -9,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 export class MeasureHistoryComponent implements OnInit {
 
     name: string;
-    tabActivated: string = 'luminosity';
+    tabActivated: string = 'movement';
 
     constructor() { }
 

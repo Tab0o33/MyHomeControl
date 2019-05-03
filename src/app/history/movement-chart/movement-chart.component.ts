@@ -122,19 +122,11 @@ export class MovementChartComponent implements OnInit {
                 legend: {
                     display: true
                 },
-                scales: {
-                    xAxes: [{
-                        display: true,
-                        stacked: true
-                    }],
-                    yAxes: [{
-                        display: true,
-                        //stacked: true,
-                        ticks: {
-                            beginAtZero: true,
-                            max: 100,
-                        }
-                    }],
+                scale: {
+                    ticks: {
+                        min: 0,
+                        max: 100
+                    }
                 }
             }
         });

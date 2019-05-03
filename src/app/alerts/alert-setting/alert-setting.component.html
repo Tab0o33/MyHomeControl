@@ -96,8 +96,15 @@
         <div *ngIf="countLuminosityAlerts === 0">Aucune alerte de luminosité</div>
     </div>
 
+    <div class="fixed-bottom mb-5 mr-5">
+        <i class="material-icons float-right addButton text-primary rounded-circle border shadow" data-toggle="modal"
+            data-target="#exampleModal" style="font-size: 3.5em;">
+            add_circle
+        </i>
+    </div>
 
-    <button type="button" class="btn btn-primary my-5" *ngIf="!showForm" (click)="addAlertSwitcher()">Ajouter</button>
+
+    <!--<button type="button" class="btn btn-primary my-5" *ngIf="!showForm" (click)="addAlertSwitcher()">Ajouter</button>-->
 
     <div *ngIf="showForm" class="row my-5">
         <div class="col-sm-8 col-sm-offset-2">
@@ -116,10 +123,48 @@
                 </select>
             </div>
 
-            <app-temperature-form *ngIf="physicalParameterInput === 'temperature'" (submitted)="addAlertSwitcher()"></app-temperature-form>
+            <app-temperature-form *ngIf="physicalParameterInput === 'temperature'" (submitted)="addAlertSwitcher()">
+            </app-temperature-form>
 
-            <button *ngIf="physicalParameterInput === ''" class="btn btn-secondary " (click)="addAlertSwitcher()">Annuler</button>
+            <button *ngIf="physicalParameterInput === ''" class="btn btn-secondary "
+                (click)="addAlertSwitcher()">Annuler</button>
         </div>
     </div>
 
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Nouvelle alerte</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="physicalParameter">
+                            Grandeur Physique
+                        </label>
+                        <select id="physicalParameter" class="form-control" name="physicalParameter"
+                            (change)="changePhysicalParameter($event.target.value)" [ngModel]="defaultPhyParam">
+                            <option value="movement" selected>Mouvement</option>
+                            <option value="temperature">Température</option>
+                            <option value="pressure">Pression</option>
+                            <option value="humidity">Humidité</option>
+                            <option value="luminosity">Luminosité</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" [disabled]="formPhysicalParameter != ''">Next</button>
+            </div>
+        </div>
+    </div>
 </div>
