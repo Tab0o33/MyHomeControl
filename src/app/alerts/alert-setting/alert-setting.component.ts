@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertService } from '../alert.service';
 import { Subscription } from 'rxjs/Subscription';
+import { AuthService } from '../../Authentication/auth.service';
 
 @Component({
     selector: 'app-alert-setting',
@@ -11,6 +12,7 @@ import { Subscription } from 'rxjs/Subscription';
 export class AlertSettingComponent implements OnInit {
 
     alertSubscription: Subscription;
+    userIDSubscription: Subscription;
 
     physicalParameterInput: string = '';
 
@@ -32,11 +34,14 @@ export class AlertSettingComponent implements OnInit {
 
     formPhysicalParameter: string = '';
     defaultPhyParam: string = 'movement';
+    userID: any;
 
-    constructor(private alertService: AlertService) { }
+    constructor(private alertService: AlertService,
+        private authService: AuthService) { }
 
     ngOnInit() {
 
+        this.alertService.getUserID();
         this.alertSubscription = this.alertService.alertsSubject.subscribe(
             (alerts: any[]) => {
                 this.alerts = alerts;
@@ -66,6 +71,8 @@ export class AlertSettingComponent implements OnInit {
             }
         );
         this.alertService.emitAlertSubject();
+
+        
 
     }
 

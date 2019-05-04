@@ -96,9 +96,9 @@
         <div *ngIf="countLuminosityAlerts === 0">Aucune alerte de luminosité</div>
     </div>
 
-    <div class="fixed-bottom mb-5 mr-5">
+    <div style="width: 4em;  position: fixed; right: 2em; bottom: 2em;">
         <i class="material-icons float-right addButton text-primary rounded-circle border shadow" data-toggle="modal"
-            data-target="#exampleModal" style="font-size: 3.5em;">
+            data-target="#exampleModal" title="Ajouter une alerte" style="font-size: 3.5em;">
             add_circle
         </i>
     </div>
@@ -145,21 +145,22 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form>
-                    <div class="form-group">
-                        <label for="physicalParameter">
-                            Grandeur Physique
-                        </label>
-                        <select id="physicalParameter" class="form-control" name="physicalParameter"
-                            (change)="changePhysicalParameter($event.target.value)" [ngModel]="defaultPhyParam">
-                            <option value="movement" selected>Mouvement</option>
-                            <option value="temperature">Température</option>
-                            <option value="pressure">Pression</option>
-                            <option value="humidity">Humidité</option>
-                            <option value="luminosity">Luminosité</option>
-                        </select>
-                    </div>
-                </form>
+                <div class="form-group">
+                    <label for="physicalParameter">
+                        Grandeur Physique
+                    </label>
+                    <select id="physicalParameter" class="form-control" name="physicalParameter"
+                        (change)="changePhysicalParameter($event.target.value)" ngModel>
+                        <option value="movement">Mouvement</option>
+                        <option value="temperature">Température</option>
+                        <option value="pressure">Pression</option>
+                        <option value="humidity">Humidité</option>
+                        <option value="luminosity">Luminosité</option>
+                    </select>
+                </div>
+    
+                <app-temperature-form *ngIf="physicalParameterInput === 'temperature'" (submitted)="addAlertSwitcher()">
+                </app-temperature-form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

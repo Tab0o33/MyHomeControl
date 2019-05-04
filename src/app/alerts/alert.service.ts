@@ -3,13 +3,18 @@ import { HttpClient } from '@angular/common/http';
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 import * as firebase from 'firebase/app';
 import { Subject, Observable, Subscription } from 'rxjs';
+import { AuthService } from '../Authentication/auth.service';
 
 @Injectable()
 
 
 export class AlertService {
 
+  userID;
+
   alertsSubject = new Subject<any[]>();
+
+  userIDSubscription: Subscription;
 
   private alerts = [
     /*{
@@ -45,11 +50,19 @@ export class AlertService {
   ];
 
   constructor(private httpClient: HttpClient,
-    public afDB: AngularFireDatabase) {
+    public afDB: AngularFireDatabase,
+    public authService: AuthService) {
 
-    afDB.list<any>('/alerts').valueChanges().subscribe(
+    //this.getUserID();
+
+
+  }
+
+  watchAlertsInDataBase() {
+    this.afDB.list<any>('/alerts/' + this.userID).valueChanges().subscribe(
       (value) => {
         this.alerts = value;
+        console.log("value ", value);
         this.emitAlertSubject();
       },
       (error) => {
@@ -67,19 +80,38 @@ export class AlertService {
   deleteOneAlert(i: number) {
     console.log(i);
     this.alerts.splice(i, 1);
-    this.saveMeasuresToServer();
+    this.saveAlertsToServer();
     this.emitAlertSubject();
   }
 
   addOneAlert(alert) {
     this.alerts.push(alert);
-    
+
     this.emitAlertSubject();
-    this.saveMeasuresToServer();
+    this.saveAlertsToServer();
   }
 
-  saveMeasuresToServer() {
-    firebase.database().ref('/alerts').set(this.alerts);
+  saveAlertsToServer() {
+    console.log("saving alerts ...(" + this.userID + ")");
+    firebase.database().ref('/alerts/' + this.userID).set(this.alerts);
+  }
+
+  getUserID() {
+    this.authService.emitUserIDSubject();
+    console.log("alertService getUserID ...");
+    this.userIDSubscription = this.authService.userIDSubject.subscribe(
+      (userID: any) => {
+        this.userID = userID;
+        console.log("alertService userID " + this.userID);
+        this.watchAlertsInDataBase();
+      },
+      (err) => {
+        console.log("alertService userID err" + err);
+      },
+      () => {
+        console.log("alertService userID complete");
+      });
+
   }
 
 
