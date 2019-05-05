@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AlertService } from '../alert.service';
 import { Subscription } from 'rxjs/Subscription';
 import { AuthService } from '../../Authentication/auth.service';
@@ -9,7 +9,7 @@ import { AuthService } from '../../Authentication/auth.service';
     styleUrls: ['./alert-setting.component.scss',
         '../../../material-design.css']
 })
-export class AlertSettingComponent implements OnInit {
+export class AlertSettingComponent implements OnInit, OnDestroy {
 
     alertSubscription: Subscription;
     userIDSubscription: Subscription;
@@ -103,6 +103,10 @@ export class AlertSettingComponent implements OnInit {
 
     switchLuminosityHidden() {
         this.luminosityHidden = !this.luminosityHidden;
+    }
+
+    ngOnDestroy(){
+        console.log("onDestroy");
     }
 
 }
